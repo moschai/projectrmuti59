@@ -9,4 +9,6 @@ export class CreateAdminDto {
     @IsString()
     @Length(8, 50)
     password: string;
+
+    //test commit
 }
