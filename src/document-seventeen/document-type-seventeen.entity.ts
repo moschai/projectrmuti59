@@ -41,7 +41,7 @@ export class fte_document_type_seventeen extends BaseEntity {
     @Column({ type: 'varchar', length: 128 })
     pastnamesubject: string;
 
-    @Column({ type: 'tinyint', width: 3 })
+    @Column({ type: 'tinyint', width: 15 })
     newidsubject: number;
 
     @Column({ type: 'varchar', length: 128 })

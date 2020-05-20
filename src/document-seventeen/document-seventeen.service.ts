@@ -30,6 +30,7 @@ export class DocumentSeventeenService {
     async createDocument(
         createDocumentSeventeenDto: CreateDocumentSeventeenDto
     ) {
+        console.log(createDocumentSeventeenDto.teacherteath_id)
         const teacherteath = await this.authorityRepo.findOne({ where: { id_authority: createDocumentSeventeenDto.teacherteath_id } });
         if (!teacherteath) {
             throw new NotFoundException('รหัสอาจารย์ที่ปรึกษาไม่ถูกต้อง')

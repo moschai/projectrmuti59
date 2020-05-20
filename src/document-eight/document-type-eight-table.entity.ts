@@ -16,7 +16,7 @@ export class fte_document_type_eight_table extends BaseEntity {
     @JoinColumn({ name: 'advisor_id' })
     advisor: fte_authority;
 
-    @Column({ type: 'tinyint', width: 3 })
+    @Column({ type: 'tinyint', width: 15 })
     idsubject: number;
 
     @Column({ type: 'varchar', length: 128 })

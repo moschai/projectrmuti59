@@ -32,7 +32,7 @@ export class CreateDocumentFiveDto {
     surname_std: string;
 
     @IsString()
-    @Length(14, 14)
+    @Length(13, 13)
     id_std: string;
 
     @IsString()

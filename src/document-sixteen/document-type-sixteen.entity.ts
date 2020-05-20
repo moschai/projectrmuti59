@@ -15,10 +15,10 @@ export class fte_document_type_sixteen extends BaseEntity {
     @JoinColumn({ name: 'id_signature' })
     signature: fte_signature_sixteen;
 
-    @Column({ type: 'tinyint', width: 3 })
+    @Column({ type: 'tinyint', width: 5 })
     delaygraduationterm: number;
 
-    @Column({ type: 'tinyint', width: 3 })
+    @Column({ type: 'tinyint', width: 5 })
     delaygraduationyear: number;
 
     @Column({ type: 'varchar', length: 512 })

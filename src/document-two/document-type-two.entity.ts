@@ -15,19 +15,19 @@ export class fte_document_type_two extends BaseEntity {
     signature: fte_signature_two;
 
 
-    @Column({ type: 'tinyint', width: 3 })
+    @Column({ type: 'tinyint', width: 5 })
     takeleaveterm: number;
 
-    @Column({ type: 'tinyint', width: 4 })
+    @Column({ type: 'tinyint', width: 5 })
     takeleaveyear: number;
 
     @Column({ type: "varchar", length: 128 })
     dear: string;
 
-    @Column({ type: 'tinyint', width: 3 })
+    @Column({ type: 'tinyint', width: 5 })
     returnterm: number;
 
-    @Column({ type: 'tinyint', width: 4 })
+    @Column({ type: 'tinyint', width: 5 })
     returnyear: number;
 
     @CreateDateColumn()

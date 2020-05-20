@@ -41,12 +41,12 @@ export class DocumentFifteenService {
 
 
         const student = await this.studentRepo.createStudent(createDocumentFifteenDto);
-        if (!authority_activity) {
-            const signatureFifteen = await this.signatureFifteenRepo.createSignature(createDocumentFifteenDto, advisor, mastersubject, authority_activity);
-            const documentFifteen = await this.docTypeFifteenRepo.createDocumentFifteen(createDocumentFifteenDto, signatureFifteen);
-            return await this.documentRepo.createDocumentTypeFifteen(student, documentFifteen);
-            //สร้างนักศึกษา -> สร้างลายเซ็น -> สร้าง doc type -> สร้าง doc
-        }
+
+        const signatureFifteen = await this.signatureFifteenRepo.createSignature(createDocumentFifteenDto, advisor, mastersubject, authority_activity);
+        const documentFifteen = await this.docTypeFifteenRepo.createDocumentFifteen(createDocumentFifteenDto, signatureFifteen);
+        return await this.documentRepo.createDocumentTypeFifteen(student, documentFifteen);
+        //สร้างนักศึกษา -> สร้างลายเซ็น -> สร้าง doc type -> สร้าง doc
+
 
     }
 }

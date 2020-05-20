@@ -27,8 +27,8 @@ export class fte_document_type_twelve extends BaseEntity {
     @Column({ type: 'varchar', length: 128 })
     signatureteacher: string;
 
-    @Column({ type: 'tinyint', width: 10 })
-    phoneparent: number;
+    @Column({ type: 'varchar', length: 10 })
+    phoneparent: string;
 
     @CreateDateColumn()
     created: Date;

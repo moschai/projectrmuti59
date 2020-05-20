@@ -15,19 +15,19 @@ export class fte_document_type_fifteen extends BaseEntity {
     @JoinColumn({ name: 'id_signature' })
     signature: fte_signature_fifteen;
 
-    @Column({ type: 'tinyint', width: 3 })
+    @Column({ type: 'tinyint', width: 5 })
     graduationrequestterm: number;
 
-    @Column({ type: 'tinyint', width: 3 })
+    @Column({ type: 'tinyint', width: 5 })
     graduationrequestyear: number;
 
     @Column({ type: 'varchar', length: 128 })
     classyear: string;
 
-    @Column({ type: 'varchar', length: 128 })
-    timestudy: string;
+    @Column({ type: 'tinyint', width: 5 })
+    timestudy: number;
 
-    @Column({ type: 'tinyint', width: 3 })
+    @Column({ type: 'tinyint', width: 5 })
     typestudy: number;
 
     @CreateDateColumn()

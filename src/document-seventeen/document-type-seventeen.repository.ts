@@ -20,6 +20,7 @@ export class DocumentTypeSeventeenRepository extends Repository<fte_document_typ
         documentSeventeen.pastnamesubject = createDocumentSeventeenDto.pastnamesubject;
         documentSeventeen.newidsubject = createDocumentSeventeenDto.newidsubject;
         documentSeventeen.newnamesubject = createDocumentSeventeenDto.newnamesubject;
+        documentSeventeen.signature = signatureSeventeen;
 
 
         return await documentSeventeen.save();

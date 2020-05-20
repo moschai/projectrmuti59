@@ -14,8 +14,7 @@ export class CreateDocumentFifteenDto {
     classyear: string;
 
     @IsString()
-    @MaxLength(128)
-    timestudy: string;
+    timestudy: number;
 
     @IsNumber()
     typestudy: number;
@@ -29,7 +28,7 @@ export class CreateDocumentFifteenDto {
     surname_std: string;
 
     @IsString()
-    @Length(14, 14)
+    @Length(13, 13)
     id_std: string;
 
     @IsString()

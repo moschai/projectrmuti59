@@ -14,9 +14,9 @@ export class CreateDocumentTwelveDto {
     @MaxLength(128)
     surname: string;
 
-    @IsNumber()
+    @IsString()
     @Length(10, 10)
-    phoneparent: number;
+    phoneparent: string;
 
 
     //ส่วนของ นักศึกษา
@@ -29,7 +29,7 @@ export class CreateDocumentTwelveDto {
     surname_std: string;
 
     @IsString()
-    @Length(14, 14)
+    @Length(13, 13)
     id_std: string;
 
     @IsString()

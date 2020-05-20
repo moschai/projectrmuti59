@@ -256,6 +256,7 @@ export class DocumentRepository extends Repository<fte_document>{
         student: fte_student,
         documentSeventeen: fte_document_type_seventeen
     ): Promise<fte_document> {
+
         const document = new fte_document();
         document.student = student;
         document.type_seventeen = documentSeventeen;

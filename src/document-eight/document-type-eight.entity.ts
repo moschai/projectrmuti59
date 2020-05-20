@@ -19,10 +19,10 @@ export class fte_document_type_eight extends BaseEntity {
     @JoinColumn({ name: 'id_signature' })
     signature: fte_signature_eight;
 
-    @Column({ type: 'tinyint', width: 3 })
+    @Column({ type: 'tinyint', width: 5 })
     movinggroupterm: number;
 
-    @Column({ type: 'tinyint', width: 3 })
+    @Column({ type: 'tinyint', width: 5 })
     movinggroupyear: number;
 
     @Column({ type: 'varchar', length: 512 })

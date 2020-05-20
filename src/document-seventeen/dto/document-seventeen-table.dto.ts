@@ -1,15 +1,13 @@
-import { IsNumber, IsString, MaxLength } from "class-validator";
+import { IsNumber, IsString, MaxLength, Length } from "class-validator";
 
 export class SeventeenTableDto {
 
     @IsNumber()
     studentno: number;
 
-    @IsNumber()
-    idstudent: number;
+    @IsString()
+    idstudent: string;
 
-    @IsNumber()
-    subjectno: number;
 
     @IsString()
     @MaxLength(128)

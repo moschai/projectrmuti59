@@ -11,11 +11,11 @@ export class fte_document_type_seventeen_table extends BaseEntity {
     @JoinColumn({ name: 'idType' })
     type: fte_document_type_seventeen;
 
-    @Column({ type: 'tinyint', width: 3 })
+    @Column({ type: 'tinyint', width: 5 })
     studentno: number;
 
-    @Column({ type: 'tinyint', width: 3 })
-    idstudent: number;
+    @Column({ type: 'varchar', length: 128 })
+    idstudent: string;
 
     @Column({ type: 'varchar', length: 128 })
     namestudent: string;
