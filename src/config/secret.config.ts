@@ -1,1 +1,1 @@
-export const secret = "moschai"
+export const secret = "moschai_rmuti"

@@ -3,6 +3,7 @@ import { CreateAdminDto } from './dto/create-admin.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AdminRepository } from './admin.repository';
 import { fte_admin } from './admin.entity';
+import { AdminAuthDto } from 'src/auth/dto/admin-login.dto';
 
 @Injectable()
 export class AdminService {
@@ -18,4 +19,6 @@ export class AdminService {
         const { password, salt, ...adminResponse } = adminCreated;
         return adminResponse;
     }
+
+
 }

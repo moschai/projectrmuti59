@@ -1,53 +1,81 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne, OneToMany, Unique, CreateDateColumn, UpdateDateColumn } from "typeorm";
-import * as bcrypt from 'bcrypt'
+import {
+  Entity,
+  BaseEntity,
+  PrimaryGeneratedColumn,
+  Column,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  Unique,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from "typeorm";
+import * as bcrypt from "bcrypt";
 
 import { fte_major } from "./major.entity";
 import { fte_student } from "src/student/student.entity";
 import { fte_document } from "src/document/document.entity";
-
+import { fte_faculty } from "./faculty.entity";
+import { EPositionAuthority } from "./enum/position-authority.enum";
 
 @Entity()
-@Unique(['username'])
+@Unique(["username"])
 export class fte_authority extends BaseEntity {
-    @PrimaryGeneratedColumn()
-    id_authority: number
+  @PrimaryGeneratedColumn()
+  id_authority: number;
 
-    @ManyToOne(type => fte_major, major => major.authority, { eager: true })
-    @JoinColumn({ name: 'id_major' })
-    major: fte_major;
+  @ManyToOne(
+    (type) => fte_faculty,
+    (faculty) => faculty.major,
+    { eager: true }
+  )
+  @JoinColumn({ name: "id_faculty" })
+  faculty: fte_faculty;
 
-    @OneToMany(type => fte_document, document => document.nextSignature, { eager: false })
-    document: fte_document[];
+  @ManyToOne(
+    (type) => fte_major,
+    (major) => major.authority,
+    { eager: true }
+  )
+  @JoinColumn({ name: "id_major" })
+  major: fte_major;
 
-    @Column({ type: 'varchar', length: 50 })
-    username: string;
+  @OneToMany(
+    (type) => fte_document,
+    (document) => document.nextSignature,
+    { eager: false }
+  )
+  document: fte_document[];
 
-    @Column({ type: 'text' })
-    password: string;
+  @Column({ type: "varchar", length: 50, select: false })
+  username: string;
 
-    @Column({ type: 'text' })
-    salt: string;
+  @Column({ type: "text", select: false })
+  password: string;
 
-    async validatePassword(password: string): Promise<boolean> {
-        const hash = await bcrypt.hash(password, this.salt);
-        return hash === this.password;
-    }
+  @Column({ type: "text", select: false })
+  salt: string;
 
-    @Column({ type: 'varchar', length: 50 })
-    name_authority: string;
+  async validatePassword(password: string): Promise<boolean> {
+    const hash = await bcrypt.hash(password, this.salt);
+    return hash === this.password;
+  }
 
-    @Column({ type: 'varchar', length: 50 })
-    surname_authority: string;
+  @Column({ type: "varchar", length: 50 })
+  name_authority: string;
 
-    @Column({ type: 'varchar', length: 255 })
-    signature: string;
+  @Column({ type: "varchar", length: 50 })
+  surname_authority: string;
 
-    @Column({ type: 'varchar', length: 255 })
-    position_authority: string;
+  @Column({ type: "varchar", length: 255 })
+  signature: string;
 
-    @CreateDateColumn()
-    created: Date;
+  @Column({ type: "varchar", length: 255 })
+  position_authority: string;
 
-    @UpdateDateColumn({ type: 'timestamp' })
-    update: Date;
+  @CreateDateColumn()
+  created: Date;
+
+  @UpdateDateColumn({ type: "timestamp" })
+  update: Date;
 }

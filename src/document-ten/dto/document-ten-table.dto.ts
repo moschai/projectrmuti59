@@ -1,26 +1,19 @@
-import { IsNumber, IsString, MaxLength } from "class-validator";
+import { IsNumber, IsString, MaxLength, IsNumberString } from "class-validator";
 
 export class TenTableDto {
-    @IsNumber()
-    idstructure: number;
+  // @IsString()
+  // subject: string;
 
-    @IsString()
-    @MaxLength(128)
-    namestructure: string;
+  @IsString()
+  idcompare: string;
 
-    @IsNumber()
-    unitstructure: number;
+  @IsString()
+  @MaxLength(128)
+  namecompare: string;
 
-    @IsNumber()
-    idcompare: number;
+  @IsNumber()
+  unitcompare: number;
 
-    @IsString()
-    @MaxLength(128)
-    namecompare: string;
-
-    @IsNumber()
-    unitcompare: number;
-
-    @IsNumber()
-    advisor: number
+  @IsNumber()
+  advisor: number;
 }

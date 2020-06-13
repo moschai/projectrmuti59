@@ -1,6 +1,7 @@
-import { Controller, Get, Param, Post, Body, ValidationPipe } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, ValidationPipe, UseGuards } from '@nestjs/common';
 import { AuthorityService } from './authority.service';
 import { CreateAuthorityDto } from './dto/create-authority.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('authority')
 export class AuthorityController {
@@ -13,6 +14,7 @@ export class AuthorityController {
         return this.authorityService.createAuthority(createAuthorityDto)
     }
 
+    // @UseGuards(AuthGuard('jwt-authority'))
     @Get()
     getAuthoritysAll() {
         return this.authorityService.getAuthoritysAll();

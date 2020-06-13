@@ -14,8 +14,9 @@ export class DocumentTypeTwelveRepository extends Repository<fte_document_type_t
         documentTwelve.nameparent = createDocumentTwelveDto.nameparent;
         documentTwelve.surname = createDocumentTwelveDto.surname;
         documentTwelve.phoneparent = createDocumentTwelveDto.phoneparent;
+        documentTwelve.signatureparent=createDocumentTwelveDto.signatureparent
         documentTwelve.signature = signatureTwelve;
-
+    
 
         return await documentTwelve.save();
     }

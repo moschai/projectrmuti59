@@ -1,93 +1,74 @@
-import { IsNumber, IsString, MaxLength, Length, IsInt } from "class-validator";
+import {
+  IsNumber,
+  IsString,
+  MaxLength,
+  Length,
+  IsInt,
+  IsOptional,
+  IsNumberString,
+  IsArray,
+  IsNotEmpty,
+  ValidateNested,
+} from "class-validator";
 import { LevelEducation } from "src/document/enum/level-education.enum";
+import { Type } from "class-transformer";
+import { NineTableDto } from "./document-nine-table.dto";
 
 export class CreateDocumentNineDto {
+  @IsArray()
+  @IsNotEmpty()
+  @ValidateNested({ each: true })
+  @Type(() => NineTableDto)
+  tables: NineTableDto[];
 
+  @IsNumberString()
+  lastepaymentterm: number;
 
-    @IsNumber()
-    lastepaymentterm: number;
+  @IsNumberString()
+  latepaymentyear: number;
 
-    @IsNumber()
-    latepaymentyear: number;
+  @IsString()
+  @MaxLength(512)
+  latepaymentsince: string;
 
-    @IsString()
-    @MaxLength(512)
-    latepaymentsince: string;
+  @IsNumberString()
+  topic: number;
 
-    @IsNumber()
-    certificateterm: number;
+  //ส่วนของ นักศึกษา
+  @IsString()
+  @MaxLength(50)
+  name_std: string;
 
-    @IsNumber()
-    certificateyear: number;
+  @IsString()
+  @MaxLength(50)
+  surname_std: string;
 
-    @IsNumber()
-    idsubject: number;
+  @IsString()
+  @Length(13, 13)
+  id_std: string;
 
-    @IsString()
-    @MaxLength(128)
-    namesubject: string;
+  @IsString()
+  @Length(10, 10)
+  phone_std: string;
 
-    @IsString()
-    @MaxLength(128)
-    groupstudy: string;
+  @IsNumberString()
+  lveducation: LevelEducation;
 
-    @IsString()
-    @MaxLength(128)
-    nameauthority: string;
+  @IsNumber()
+  advisor_id: number;
 
-    @IsNumber()
-    latepayregister: number;
+  @IsNumber()
+  mastersubject_id: number;
 
-    @IsNumber()
-    latepayaddsubject: number;
+  @IsNumber()
+  @IsOptional()
+  head_service_or_deanoffice_id: number;
 
-    @IsNumber()
-    latepaywithdraw: number;
+  @IsNumber()
+  @IsOptional()
+  deputy_dean_research_id: number;
 
-    @IsString()
-    @MaxLength(255)
-    signatureteacher: string;
-
-    @IsString()
-    @MaxLength(255)
-    signature: string;
-    //ส่วนของ นักศึกษา
-    @IsString()
-    @MaxLength(50)
-    name_std: string;
-
-    @IsString()
-    @MaxLength(50)
-    surname_std: string;
-
-    @IsString()
-    @Length(13, 13)
-    id_std: string;
-
-    @IsString()
-    @Length(10, 10)
-    phone_std: string;
-
-    @IsNumber()
-    lveducation: LevelEducation;
-
-    @IsNumber()
-    id_major: number;
-
-    @IsInt()
-    advisor_id: number;
-
-    @IsInt()
-    mastersubject_id: number;
-
-    @IsInt()
-    head_service_or_deanoffice_id: number;
-
-    @IsInt()
-    deputy_dean_research_id: number;
-
-    @IsInt()
-    dean_id: number;
-
-
+  @IsNumber()
+  @IsOptional()
+  dean_id: number;
 }

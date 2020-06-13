@@ -1,14 +1,11 @@
 import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToOne } from "typeorm";
-import { fte_document } from "../document/document.entity";
+
 
 @Entity()
 export class fte_document_type_eighteen extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     idtype: number;
-
-    @OneToOne(type => fte_document, document => document.type_eighteen, { eager: false })
-    document: fte_document;
 
     @Column({ type: 'tinyint', width: 3 })
     changescoreterm: number;

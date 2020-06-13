@@ -3,6 +3,7 @@ import * as bcrypt from 'bcrypt'
 import { fte_admin } from "./admin.entity";
 import { CreateAdminDto } from "./dto/create-admin.dto";
 import { ConflictException, InternalServerErrorException } from "@nestjs/common";
+import { AdminAuthDto } from "src/auth/dto/admin-login.dto";
 
 @EntityRepository(fte_admin)
 export class AdminRepository extends Repository<fte_admin>{
@@ -27,6 +28,17 @@ export class AdminRepository extends Repository<fte_admin>{
 
     private async hashPassword(password: string, salt: string): Promise<string> {
         return await bcrypt.hash(password, salt);
+    }
+
+    async validateAdminPassword(adminAuthDto: AdminAuthDto): Promise<any> {
+        const { username, password } = adminAuthDto
+        const admin = await this.findOne({ username })
+        if (admin && await admin.validatePassword(password)) {
+            // const { password, salt, ...adminReponse } = admin
+            return admin
+        } else {
+            return undefined;
+        }
     }
 
 }

@@ -1,19 +1,28 @@
-import { IsNumber, IsString, MaxLength } from "class-validator";
+import {
+  IsNumber,
+  IsString,
+  MaxLength,
+  IsOptional,
+  MinLength,
+  IsNumberString,
+} from "class-validator";
+import { isNumber } from "util";
 
 export class SevenTableDto {
-    @IsNumber()
-    subjectno: number;
+  @IsOptional()
+  @IsNumber()
+  subjectno: number;
 
-    @IsString()
-    @MaxLength(128)
-    namesubject: string;
+  @IsString()
+  subject: string;
 
-    @IsString()
-    @MaxLength(128)
-    groupstudy: string;
+  @IsString()
+  @MaxLength(128)
+  namesubject: string;
 
-
-    @IsString()
-    @MaxLength(255)
-    note: string;
+  @IsString()
+  @IsOptional()
+  @MinLength(0)
+  @MaxLength(255)
+  note: string;
 }

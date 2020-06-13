@@ -1,68 +1,64 @@
-import { IsNumber, IsString, MaxLength, Length, IsInt } from "class-validator";
+import {
+  IsNumber,
+  IsString,
+  MaxLength,
+  Length,
+  IsOptional,
+  IsNumberString,
+  MinLength,
+} from "class-validator";
 import { LevelEducation } from "src/document/enum/level-education.enum";
 
 export class CreateDocumentFourDto {
+  @IsNumberString()
+  overlowstandard: number;
 
-    @IsNumber()
-    overstandard: number;
+  @IsNumberString()
+  termunit: number;
 
-    @IsNumber()
-    lowstandard: number;
+  @IsNumberString()
+  sumorremainunit: number;
 
-    @IsNumber()
-    termunit: number;
+  @IsString()
+  @MinLength(0)
+  @MaxLength(512)
+  overslowstandardsince: string;
 
-    @IsNumber()
-    termsumunit: number;
+  //ส่วนของ นักศึกษา
+  @IsString()
+  @MaxLength(50)
+  name_std: string;
 
-    @IsNumber()
-    termremainunit: number;
+  @IsString()
+  @MaxLength(50)
+  surname_std: string;
 
-    @IsString()
-    @MaxLength(512)
-    overstandardsince: string;
+  @IsString()
+  @Length(13, 13)
+  id_std: string;
 
-    @IsString()
-    @MaxLength(512)
-    lowstandardsince: string;
+  @IsString()
+  @Length(10, 10)
+  phone_std: string;
 
-    //ส่วนของ นักศึกษา
-    @IsString()
-    @MaxLength(50)
-    name_std: string;
+  @IsNumberString()
+  lveducation: LevelEducation;
 
-    @IsString()
-    @MaxLength(50)
-    surname_std: string;
+  @IsNumber()
+  advisor_id: number;
 
-    @IsString()
-    @Length(13, 13)
-    id_std: string;
+  @IsNumber()
+  mastersubject_id: number;
 
-    @IsString()
-    @Length(10, 10)
-    phone_std: string;
+  @IsNumber()
+  @IsOptional()
+  head_service_or_deanoffice_id: number;
 
-    @IsNumber()
-    lveducation: LevelEducation;
+  @IsNumber()
+  @IsOptional()
+  deputy_dean_research_id: number;
 
-    @IsNumber()
-    id_major: number;
-
-    @IsInt()
-    advisor_id: number;
-
-    @IsInt()
-    mastersubject_id: number;
-
-    @IsInt()
-    head_service_or_deanoffice_id: number;
-
-    @IsInt()
-    deputy_dean_research_id: number;
-
-    @IsInt()
-    dean_id: number;
-
-
+  @IsNumber()
+  @IsOptional()
+  dean_id: number;
 }

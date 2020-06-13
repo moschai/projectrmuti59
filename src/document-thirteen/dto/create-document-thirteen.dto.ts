@@ -1,156 +1,233 @@
-import { IsNumber, IsString, MaxLength, Length, IsInt } from "class-validator";
+import {
+  IsNumber,
+  IsString,
+  MaxLength,
+  Length,
+  IsInt,
+  IsOptional,
+  IsBoolean,
+  IsNumberString,
+} from "class-validator";
 import { LevelEducation } from "src/document/enum/level-education.enum";
+import { isNumber } from "util";
 
 export class CreateDocumentThirteenDto {
-    @IsNumber()
-    certificatesuccess: number;
+  @IsBoolean()
+  @IsOptional()
+  certificatestudy: boolean;
 
-    @IsNumber()
-    certificateregister: number;
+  @IsBoolean()
+  @IsOptional()
+  cerstudythaiversion: boolean;
 
-    @IsNumber()
-    diplomalvone: number;
+  @IsBoolean()
+  @IsOptional()
+  cerstudyengversion: boolean;
 
-    @IsNumber()
-    diplomalvpwch: number;
+  @IsNumber()
+  @IsOptional()
+  cerstudyunitthai: number;
 
-    @IsNumber()
-    diplomalvpwc: number;
+  @IsNumber()
+  @IsOptional()
+  cerstudyuniteng: number;
 
-    @IsNumber()
-    diplomaptee: number;
+  @IsBoolean()
+  @IsOptional()
+  certificatesuccess: boolean;
 
-    @IsNumber()
-    diplomaptro: number;
+  @IsBoolean()
+  @IsOptional()
+  cersuccessthaiversion: boolean;
 
-    @IsNumber()
-    loststudentcard: number;
+  @IsNumber()
+  @IsOptional()
+  cersuccessunitthai: number;
 
-    @IsNumber()
-    damagedstudentcard: number;
+  @IsBoolean()
+  @IsOptional()
+  certificateregister: boolean;
 
-    @IsNumber()
-    samestudentcard: number;
+  @IsBoolean()
+  @IsOptional()
+  cerregisterthaiversion: boolean;
 
-    @IsNumber()
-    certificateunit: number;
+  @IsNumber()
+  @IsOptional()
+  cerregisterunitthai: number;
 
-    @IsNumber()
-    transcriptlvone: number;
+  @IsBoolean()
+  @IsOptional()
+  transcripstudy: boolean;
 
-    @IsNumber()
-    transcriptlvtwo: number;
+  @IsBoolean()
+  @IsOptional()
+  transcripthaiversion: boolean;
 
-    @IsNumber()
-    otherstatus: number;
+  @IsNumber()
+  @IsOptional()
+  transcripunitthai: number;
 
-    @IsString()
-    @MaxLength(128)
-    othermassege: string;
+  @IsBoolean()
+  @IsOptional()
+  transcripengversion: boolean;
 
-    @IsNumber()
-    thaiversioncs: number;
+  @IsNumber()
+  @IsOptional()
+  transcripuniteng: number;
 
-    @IsNumber()
-    amountthcs: number;
+  @IsBoolean()
+  @IsOptional()
+  transcripsuccess: boolean;
 
-    @IsNumber()
-    amountengcs: number;
+  @IsBoolean()
+  @IsOptional()
+  tcsuccessthaiversion: boolean;
 
-    @IsNumber()
-    engversioncs: number;
+  @IsNumber()
+  @IsOptional()
+  tcsuccessunitthai: number;
 
-    @IsNumber()
-    thaiversioncr: number;
+  @IsBoolean()
+  @IsOptional()
+  tcsuccessengversion: boolean;
 
-    @IsNumber()
-    amountthcr: number;
+  @IsNumber()
+  @IsOptional()
+  tcsuccessuniteng: number;
 
-    @IsNumber()
-    thaiversiontclvone: number;
+  @IsBoolean()
+  @IsOptional()
+  dimplomalvone: boolean;
 
-    @IsNumber()
-    amountthtclvone: number;
+  @IsBoolean()
+  @IsOptional()
+  dpmlvonethaiversion: boolean;
 
-    @IsNumber()
-    amountengtclvone: number;
+  @IsNumber()
+  @IsOptional()
+  dpmlvoneunitthai: number;
 
-    @IsNumber()
-    engversiontclvone: number;
+  @IsBoolean()
+  @IsOptional()
+  dpmlvoneengversion: boolean;
 
-    @IsNumber()
-    thaiversiontclvtwo: number;
+  @IsNumber()
+  @IsOptional()
+  dpmlvoneuniteng: number;
 
-    @IsNumber()
-    amountthtclvtwo: number;
+  @IsBoolean()
+  @IsOptional()
+  dimplomalvtwo: boolean;
 
-    @IsNumber()
-    amountengtclvtwo: number;
+  @IsBoolean()
+  @IsOptional()
+  dpmlvtwothaiversion: boolean;
 
-    @IsNumber()
-    engversiontclvtwo: number;
+  @IsNumber()
+  @IsOptional()
+  dpmlvtwounitthai: number;
 
-    @IsNumber()
-    thaiversiondlvone: number;
+  @IsBoolean()
+  @IsOptional()
+  dpmlvtwoengversion: boolean;
 
-    @IsNumber()
-    amountthdlvone: number;
+  @IsNumber()
+  @IsOptional()
+  dpmlvtwouniteng: number;
 
-    @IsNumber()
-    amountengdlvone: number;
+  @IsBoolean()
+  @IsOptional()
+  dimplomalvthree: boolean;
 
-    @IsNumber()
-    engversiondlvone: number;
+  @IsBoolean()
+  @IsOptional()
+  dpmlvthreethaiversion: boolean;
 
-    @IsNumber()
-    thaiversiondlvtwo: number;
+  @IsNumber()
+  @IsOptional()
+  dpmlvthreeunitthai: number;
 
-    @IsNumber()
-    amountthdlvtwo: number;
+  @IsBoolean()
+  @IsOptional()
+  dpmlvthreeengversion: boolean;
 
-    @IsNumber()
-    amountengdlvtwo: number;
+  @IsNumber()
+  @IsOptional()
+  dpmlvthreeuniteng: number;
 
-    @IsNumber()
-    engversiondlvtwo: number;
+  @IsBoolean()
+  @IsOptional()
+  dimplomalvfour: boolean;
 
-    @IsNumber()
-    thaiversioncu: number;
+  @IsBoolean()
+  @IsOptional()
+  dpmlvfourthaiversion: boolean;
 
-    @IsNumber()
-    amountthcu: number;
+  @IsNumber()
+  @IsOptional()
+  dpmlvfourunitthai: number;
 
-    @IsNumber()
-    thaiversionotms: number;
+  @IsBoolean()
+  @IsOptional()
+  dpmlvfourengversion: boolean;
 
-    @IsNumber()
-    amountthotms: number;
+  @IsNumber()
+  @IsOptional()
+  dpmlvfouruniteng: number;
 
-    //ส่วนของ นักศึกษา
-    @IsString()
-    @MaxLength(50)
-    name_std: string;
+  @IsNumberString()
+  @IsOptional()
+  loststudentcard: number;
 
-    @IsString()
-    @MaxLength(50)
-    surname_std: string;
+  @IsBoolean()
+  @IsOptional()
+  certificateunit: boolean;
 
-    @IsString()
-    @Length(13, 13)
-    id_std: string;
+  @IsBoolean()
+  @IsOptional()
+  ctfcthaiversion: boolean;
 
-    @IsString()
-    @Length(10, 10)
-    phone_std: string;
+  @IsNumber()
+  @IsOptional()
+  ctfcunitthai: number;
 
-    @IsNumber()
-    lveducation: LevelEducation;
+  @IsBoolean()
+  @IsOptional()
+  otherdocument: boolean;
 
-    @IsNumber()
-    id_major: number;
+  @IsString()
+  @MaxLength(255)
+  othermassege: string;
 
-    @IsInt()
-    studentt_id: number;
+  @IsBoolean()
+  @IsOptional()
+  otherdocthaiversion: boolean;
 
+  @IsNumber()
+  @IsOptional()
+  otherdocunitthai: number;
 
+  //ส่วนของ นักศึกษา
+  @IsString()
+  @MaxLength(50)
+  name_std: string;
+
+  @IsString()
+  @MaxLength(50)
+  surname_std: string;
+
+  @IsString()
+  @Length(13, 13)
+  id_std: string;
+
+  @IsString()
+  @Length(10, 10)
+  phone_std: string;
+
+  @IsNumberString()
+  lveducation: LevelEducation;
+
+  @IsString()
+  signature_std: string;
 }

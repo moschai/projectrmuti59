@@ -1,63 +1,70 @@
-import { IsArray, IsNotEmpty, ValidateNested, IsNumber, IsString, MaxLength, Length, IsInt } from "class-validator";
+import {
+  IsArray,
+  IsNotEmpty,
+  ValidateNested,
+  IsNumber,
+  IsString,
+  MaxLength,
+  Length,
+  IsInt,
+  IsNumberString,
+  IsOptional,
+} from "class-validator";
 import { Type } from "class-transformer";
 import { EightTableDto } from "./document-eight-table.dto";
 import { LevelEducation } from "src/document/enum/level-education.enum";
 
 export class CreateDocumentEightDto {
+  @IsArray()
+  @IsNotEmpty()
+  @ValidateNested({ each: true })
+  @Type(() => EightTableDto)
+  tables: EightTableDto[];
+  @IsNumberString()
+  movinggroupterm: number;
 
-    @IsArray()
-    @IsNotEmpty()
-    @ValidateNested({ each: true })
-    @Type(() => EightTableDto)
-    tables: EightTableDto[];
-    @IsNumber()
-    movinggroupterm: number;
+  @IsNumberString()
+  movinggroupyear: number;
 
-    @IsNumber()
-    movinggroupyear: number;
+  @IsString()
+  @MaxLength(512)
+  movinggroupsince: string;
 
-    @IsString()
-    @MaxLength(512)
-    movinggroupsince: string;
+  //ส่วนของ นักศึกษา
+  @IsString()
+  @MaxLength(50)
+  name_std: string;
 
+  @IsString()
+  @MaxLength(50)
+  surname_std: string;
 
-    //ส่วนของ นักศึกษา
-    @IsString()
-    @MaxLength(50)
-    name_std: string;
+  @IsString()
+  @Length(13, 13)
+  id_std: string;
 
-    @IsString()
-    @MaxLength(50)
-    surname_std: string;
+  @IsString()
+  @Length(10, 10)
+  phone_std: string;
 
-    @IsString()
-    @Length(13, 13)
-    id_std: string;
+  @IsNumberString()
+  lveducation: LevelEducation;
 
-    @IsString()
-    @Length(10, 10)
-    phone_std: string;
+  @IsNumber()
+  advisor_id: number;
 
-    @IsNumber()
-    lveducation: LevelEducation;
+  @IsNumber()
+  mastersubject_id: number;
 
-    @IsNumber()
-    id_major: number;
+  @IsNumber()
+  @IsOptional()
+  head_service_or_deanoffice_id: number;
 
-    @IsInt()
-    advisor_id: number;
+  @IsNumber()
+  @IsOptional()
+  deputy_dean_research_id: number;
 
-    @IsInt()
-    mastersubject_id: number;
-
-    @IsInt()
-    head_service_or_deanoffice_id: number;
-
-    @IsInt()
-    deputy_dean_research_id: number;
-
-    @IsInt()
-    dean_id: number;
-
-
+  @IsNumber()
+  @IsOptional()
+  dean_id: number;
 }

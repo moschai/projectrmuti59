@@ -23,6 +23,7 @@ import { DocumentThirteenModule } from './document-thirteen/document-thirteen.mo
 import { DocumentSeventeenModule } from './document-seventeen/document-seventeen.module';
 import { AuthModule } from './auth/auth.module';
 import { AdminModule } from './admin/admin.module';
+import { SubjectModule } from './subject/subject.module';
 
 
 
@@ -51,6 +52,7 @@ import { AdminModule } from './admin/admin.module';
     DocumentSeventeenModule,
     AuthModule,
     AdminModule,
+    SubjectModule,
   ],
   controllers: [],
   providers: [],
