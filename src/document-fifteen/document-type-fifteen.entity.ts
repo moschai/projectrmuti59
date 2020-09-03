@@ -30,17 +30,20 @@ export class fte_document_type_fifteen extends BaseEntity {
   @Column({ type: "tinyint", width: 5 })
   graduationrequestterm: number;
 
-  @Column({ type: "tinyint", width: 5 })
-  graduationrequestyear: number;
+  @Column({ type: "varchar", length: 128 })
+  graduationrequestyear: string;
 
   @Column({ type: "varchar", length: 128 })
   classyear: string;
 
-  @Column({ type: "tinyint", width: 5 })
+  @Column({ type: "tinyint", width: 3 })
   timestudy: number;
 
-  @Column({ type: "tinyint", width: 5 })
-  typestudy: number;
+  @Column({ type: "varchar", length: 128 })
+  dear: string;
+
+  @Column({ type: "varchar", length: 128 })
+  since: string;
 
   @CreateDateColumn()
   created: Date;

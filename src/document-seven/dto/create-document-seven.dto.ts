@@ -24,17 +24,16 @@ export class CreateDocumentSevenDto {
   @IsNumberString()
   termregister: number;
 
-  @IsNumberString()
-  yearregister: number;
+  @IsString()
+  @MaxLength(128)
+  yearregister: string;
+
+  @IsString()
+  @MaxLength(128)
+  classyear: string;
 
   @IsNumberString()
-  termtotalunit: number;
-
-  @IsNumberString()
-  withdrawregisterunit: number;
-
-  @IsNumberString()
-  remainunit: number;
+  timestudy: number;
 
   //ส่วนของ นักศึกษา
   @IsString()
@@ -53,24 +52,13 @@ export class CreateDocumentSevenDto {
   @Length(10, 10)
   phone_std: string;
 
-  @IsNumberString()
+  @IsString()
+  @MaxLength(255)
+  email_std: string;
+
+  @IsNumber()
   lveducation: LevelEducation;
 
   @IsNumber()
   advisor_id: number;
-
-  @IsNumber()
-  mastersubject_id: number;
-
-  @IsNumber()
-  @IsOptional()
-  head_service_or_deanoffice_id: number;
-
-  @IsNumber()
-  @IsOptional()
-  deputy_dean_research_id: number;
-
-  @IsNumber()
-  @IsOptional()
-  dean_id: number;
 }

@@ -17,6 +17,10 @@ export class AuthorityService {
     private facultyRepo: FacultyRepository
   ) {}
 
+  async getAuthorityById(id: number) {
+    return await this.authorityRepository.findOne({ id_authority: id });
+  }
+
   async getAuthoritysAll() {
     return await this.authorityRepository.find();
   }

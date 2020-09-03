@@ -39,17 +39,14 @@ export class fte_document_type_ten extends BaseEntity {
   @Column({ type: "tinyint", width: 3 })
   compareterm: number;
 
-  @Column({ type: "tinyint", width: 3 })
-  compareyeat: number;
+  @Column({ type: "varchar", length: 128 })
+  compareyeat: string;
 
   @Column({ type: "varchar", length: 128 })
-  classyear: string;
+  cumulativeGpa: string;
 
-  @Column({ type: "tinyint", width: 3 })
-  timestudy: number;
-
-  @Column({ type: "tinyint", width: 3 })
-  typestudy: number;
+  @Column({ type: "varchar", length: 128 })
+  dear: string;
 
   @CreateDateColumn()
   created: Date;

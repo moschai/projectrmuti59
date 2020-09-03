@@ -24,6 +24,7 @@ import { DocumentSeventeenModule } from './document-seventeen/document-seventeen
 import { AuthModule } from './auth/auth.module';
 import { AdminModule } from './admin/admin.module';
 import { SubjectModule } from './subject/subject.module';
+import { UploadModule } from './upload/upload.module';
 
 
 
@@ -53,6 +54,7 @@ import { SubjectModule } from './subject/subject.module';
     AuthModule,
     AdminModule,
     SubjectModule,
+    UploadModule,
   ],
   controllers: [],
   providers: [],

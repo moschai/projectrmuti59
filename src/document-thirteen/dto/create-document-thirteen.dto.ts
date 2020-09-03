@@ -7,11 +7,53 @@ import {
   IsOptional,
   IsBoolean,
   IsNumberString,
+  MinLength,
 } from "class-validator";
 import { LevelEducation } from "src/document/enum/level-education.enum";
 import { isNumber } from "util";
 
 export class CreateDocumentThirteenDto {
+  @IsString()
+  @MaxLength(255)
+  nameeng: string;
+
+  @IsString()
+  @MaxLength(255)
+  surnameeng: string;
+
+  @IsString()
+  @MaxLength(255)
+  currentaddress: string;
+
+  @IsString()
+  @MaxLength(255)
+  daystudy: string;
+
+  @IsString()
+  @IsOptional()
+  @MaxLength(255)
+  daysuccessstudy: string;
+
+  @IsBoolean()
+  @IsOptional()
+  certificateTsc: boolean;
+
+  @IsBoolean()
+  @IsOptional()
+  cerTscthaiversion: boolean;
+
+  @IsBoolean()
+  @IsOptional()
+  cerTscengversion: boolean;
+
+  @IsNumber()
+  @IsOptional()
+  cerTscunitthai: number;
+
+  @IsNumber()
+  @IsOptional()
+  cerTscuniteng: number;
+
   @IsBoolean()
   @IsOptional()
   certificatestudy: boolean;
@@ -40,9 +82,17 @@ export class CreateDocumentThirteenDto {
   @IsOptional()
   cersuccessthaiversion: boolean;
 
+  @IsBoolean()
+  @IsOptional()
+  cersuccessengversion: boolean;
+
   @IsNumber()
   @IsOptional()
   cersuccessunitthai: number;
+
+  @IsNumber()
+  @IsOptional()
+  cersuccessuniteng: number;
 
   @IsBoolean()
   @IsOptional()
@@ -52,29 +102,61 @@ export class CreateDocumentThirteenDto {
   @IsOptional()
   cerregisterthaiversion: boolean;
 
+  @IsBoolean()
+  @IsOptional()
+  cerregisterengversion: boolean;
+
   @IsNumber()
   @IsOptional()
   cerregisterunitthai: number;
 
-  @IsBoolean()
+  @IsNumber()
   @IsOptional()
-  transcripstudy: boolean;
+  cerregisteruniteng: number;
 
   @IsBoolean()
   @IsOptional()
-  transcripthaiversion: boolean;
+  certificatestdcard: boolean;
+
+  @IsBoolean()
+  @IsOptional()
+  cerstdcardthaiversion: boolean;
 
   @IsNumber()
   @IsOptional()
-  transcripunitthai: number;
+  cerstdcardunitthai: number;
 
   @IsBoolean()
   @IsOptional()
-  transcripengversion: boolean;
+  cerstdcardengversion: boolean;
 
   @IsNumber()
   @IsOptional()
-  transcripuniteng: number;
+  cerstdcarduniteng: number;
+
+  @IsBoolean()
+  @IsOptional()
+  otherstudy: boolean;
+
+  @IsBoolean()
+  @IsOptional()
+  otherstudythaiversion: boolean;
+
+  @IsNumber()
+  @IsOptional()
+  otherstudyunitthai: number;
+
+  @IsBoolean()
+  @IsOptional()
+  otherstudyengversion: boolean;
+
+  @IsNumber()
+  @IsOptional()
+  otherstudyuniteng: number;
+
+  @IsString()
+  @MaxLength(255)
+  otherstudymessage: string;
 
   @IsBoolean()
   @IsOptional()
@@ -98,115 +180,115 @@ export class CreateDocumentThirteenDto {
 
   @IsBoolean()
   @IsOptional()
-  dimplomalvone: boolean;
+  boardcerapprove: boolean;
 
   @IsBoolean()
   @IsOptional()
-  dpmlvonethaiversion: boolean;
+  boardcerapprovethaiversion: boolean;
 
   @IsNumber()
   @IsOptional()
-  dpmlvoneunitthai: number;
+  boardcerapproveunitthai: number;
 
   @IsBoolean()
   @IsOptional()
-  dpmlvoneengversion: boolean;
+  boardcerapproveengversion: boolean;
 
   @IsNumber()
   @IsOptional()
-  dpmlvoneuniteng: number;
+  boardcerapproveuniteng: number;
 
   @IsBoolean()
   @IsOptional()
-  dimplomalvtwo: boolean;
+  cersuccessstudy: boolean;
 
   @IsBoolean()
   @IsOptional()
-  dpmlvtwothaiversion: boolean;
+  cersuccessstudythaiversion: boolean;
 
   @IsNumber()
   @IsOptional()
-  dpmlvtwounitthai: number;
+  cersuccessstudyunitthai: number;
 
   @IsBoolean()
   @IsOptional()
-  dpmlvtwoengversion: boolean;
+  cersuccessstudyengversion: boolean;
 
   @IsNumber()
   @IsOptional()
-  dpmlvtwouniteng: number;
+  cersuccessstudyuniteng: number;
 
   @IsBoolean()
   @IsOptional()
-  dimplomalvthree: boolean;
+  substitudedimploma: boolean;
 
   @IsBoolean()
   @IsOptional()
-  dpmlvthreethaiversion: boolean;
+  substitudedimplomathaiversion: boolean;
 
   @IsNumber()
   @IsOptional()
-  dpmlvthreeunitthai: number;
+  substitudedimplomaunitthai: number;
 
   @IsBoolean()
   @IsOptional()
-  dpmlvthreeengversion: boolean;
+  substitudedegree: boolean;
+
+  @IsBoolean()
+  @IsOptional()
+  substitudedegreethaiversion: boolean;
 
   @IsNumber()
   @IsOptional()
-  dpmlvthreeuniteng: number;
+  substitudedegreeunitthai: number;
 
   @IsBoolean()
   @IsOptional()
-  dimplomalvfour: boolean;
+  Translationdimploma: boolean;
 
   @IsBoolean()
   @IsOptional()
-  dpmlvfourthaiversion: boolean;
+  Translationdimplomaengversion: boolean;
 
   @IsNumber()
   @IsOptional()
-  dpmlvfourunitthai: number;
+  Translationdimplomauniteng: number;
 
   @IsBoolean()
   @IsOptional()
-  dpmlvfourengversion: boolean;
+  Translationdegree: boolean;
+
+  @IsBoolean()
+  @IsOptional()
+  Translationdegreeengversion: boolean;
 
   @IsNumber()
   @IsOptional()
-  dpmlvfouruniteng: number;
-
-  @IsNumberString()
-  @IsOptional()
-  loststudentcard: number;
+  Translationdegreeuniteng: number;
 
   @IsBoolean()
   @IsOptional()
-  certificateunit: boolean;
+  othersuccessstudy: boolean;
 
   @IsBoolean()
   @IsOptional()
-  ctfcthaiversion: boolean;
+  othersuccessstudythaiversion: boolean;
 
   @IsNumber()
   @IsOptional()
-  ctfcunitthai: number;
+  othersuccessstudyunitthai: number;
 
   @IsBoolean()
   @IsOptional()
-  otherdocument: boolean;
+  othersuccessstudyengversion: boolean;
+
+  @IsNumber()
+  @IsOptional()
+  othersuccessstudyuniteng: number;
 
   @IsString()
   @MaxLength(255)
-  othermassege: string;
-
-  @IsBoolean()
-  @IsOptional()
-  otherdocthaiversion: boolean;
-
-  @IsNumber()
-  @IsOptional()
-  otherdocunitthai: number;
+  othersuccessstudymessage: string;
 
   //ส่วนของ นักศึกษา
   @IsString()
@@ -225,7 +307,7 @@ export class CreateDocumentThirteenDto {
   @Length(10, 10)
   phone_std: string;
 
-  @IsNumberString()
+  @IsNumber()
   lveducation: LevelEducation;
 
   @IsString()

@@ -37,8 +37,11 @@ export class fte_document_type_one extends BaseEntity {
   @Column({ type: "varchar", length: 128 })
   purpose: string;
 
-  @Column({ type: "varchar", length: 512 })
-  since: string;
+  @Column({ type: "varchar", length: 128 })
+  classyear: string;
+
+  @Column({ type: "tinyint", width: 3 })
+  timestudy: number;
 
   @CreateDateColumn()
   created: Date;

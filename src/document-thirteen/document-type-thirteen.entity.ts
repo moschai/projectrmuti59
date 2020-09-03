@@ -22,6 +22,36 @@ export class fte_document_type_thirteen extends BaseEntity {
   )
   document: fte_document;
 
+  @Column({ type: "varchar", length: 255 })
+  nameeng: string;
+
+  @Column({ type: "varchar", length: 255 })
+  surnameeng: string;
+
+  @Column({ type: "varchar", length: 255 })
+  currentaddress: string;
+
+  @Column({ type: "varchar", length: 255 })
+  daystudy: string;
+
+  @Column({ type: "varchar", length: 255 })
+  daysuccessstudy: string;
+
+  @Column({ type: "boolean", width: 3 })
+  certificateTsc: boolean;
+
+  @Column({ type: "boolean", width: 3 })
+  cerTscthaiversion: boolean;
+
+  @Column({ type: "boolean", width: 3 })
+  cerTscengversion: boolean;
+
+  @Column({ type: "tinyint", width: 3 })
+  cerTscunitthai: number;
+
+  @Column({ type: "tinyint", width: 3 })
+  cerTscuniteng: number;
+
   @Column({ type: "boolean", width: 3 })
   certificatestudy: boolean;
 
@@ -43,8 +73,14 @@ export class fte_document_type_thirteen extends BaseEntity {
   @Column({ type: "boolean", width: 3 })
   cersuccessthaiversion: boolean;
 
+  @Column({ type: "boolean", width: 3 })
+  cersuccessengversion: boolean;
+
   @Column({ type: "tinyint", width: 3 })
   cersuccessunitthai: number;
+
+  @Column({ type: "tinyint", width: 3 })
+  cersuccessuniteng: number;
 
   @Column({ type: "boolean", width: 3 })
   certificateregister: boolean;
@@ -52,23 +88,47 @@ export class fte_document_type_thirteen extends BaseEntity {
   @Column({ type: "boolean", width: 3 })
   cerregisterthaiversion: boolean;
 
+  @Column({ type: "boolean", width: 3 })
+  cerregisterengversion: boolean;
+
   @Column({ type: "tinyint", width: 3 })
   cerregisterunitthai: number;
 
-  @Column({ type: "boolean", width: 3 })
-  transcripstudy: boolean;
+  @Column({ type: "tinyint", width: 3 })
+  cerregisteruniteng: number;
 
   @Column({ type: "boolean", width: 3 })
-  transcripthaiversion: boolean;
+  certificatestdcard: boolean;
+
+  @Column({ type: "boolean", width: 3 })
+  cerstdcardthaiversion: boolean;
 
   @Column({ type: "tinyint", width: 3 })
-  transcripunitthai: number;
+  cerstdcardunitthai: number;
 
   @Column({ type: "boolean", width: 3 })
-  transcripengversion: boolean;
+  cerstdcardengversion: boolean;
 
   @Column({ type: "tinyint", width: 3 })
-  transcripuniteng: number;
+  cerstdcarduniteng: number;
+
+  @Column({ type: "boolean", width: 3 })
+  otherstudy: boolean;
+
+  @Column({ type: "boolean", width: 3 })
+  otherstudythaiversion: boolean;
+
+  @Column({ type: "tinyint", width: 3 })
+  otherstudyunitthai: number;
+
+  @Column({ type: "boolean", width: 3 })
+  otherstudyengversion: boolean;
+
+  @Column({ type: "tinyint", width: 3 })
+  otherstudyuniteng: number;
+
+  @Column({ type: "varchar", length: 255 })
+  otherstudymessage: string;
 
   @Column({ type: "boolean", width: 3 })
   transcripsuccess: boolean;
@@ -86,88 +146,88 @@ export class fte_document_type_thirteen extends BaseEntity {
   tcsuccessuniteng: number;
 
   @Column({ type: "boolean", width: 3 })
-  dimplomalvone: boolean;
+  boardcerapprove: boolean;
 
   @Column({ type: "boolean", width: 3 })
-  dpmlvonethaiversion: boolean;
+  boardcerapprovethaiversion: boolean;
 
   @Column({ type: "tinyint", width: 3 })
-  dpmlvoneunitthai: number;
+  boardcerapproveunitthai: number;
 
   @Column({ type: "boolean", width: 3 })
-  dpmlvoneengversion: boolean;
+  boardcerapproveengversion: boolean;
 
   @Column({ type: "tinyint", width: 3 })
-  dpmlvoneuniteng: number;
+  boardcerapproveuniteng: number;
 
   @Column({ type: "boolean", width: 3 })
-  dimplomalvtwo: boolean;
+  cersuccessstudy: boolean;
 
   @Column({ type: "boolean", width: 3 })
-  dpmlvtwothaiversion: boolean;
+  cersuccessstudythaiversion: boolean;
 
   @Column({ type: "tinyint", width: 3 })
-  dpmlvtwounitthai: number;
+  cersuccessstudyunitthai: number;
 
   @Column({ type: "boolean", width: 3 })
-  dpmlvtwoengversion: boolean;
+  cersuccessstudyengversion: boolean;
 
   @Column({ type: "tinyint", width: 3 })
-  dpmlvtwouniteng;
+  cersuccessstudyuniteng: number;
 
   @Column({ type: "boolean", width: 3 })
-  dimplomalvthree: boolean;
+  substitudedimploma: boolean;
 
   @Column({ type: "boolean", width: 3 })
-  dpmlvthreethaiversion: boolean;
+  substitudedimplomathaiversion: boolean;
 
   @Column({ type: "tinyint", width: 3 })
-  dpmlvthreeunitthai: number;
+  substitudedimplomaunitthai: number;
 
   @Column({ type: "boolean", width: 3 })
-  dpmlvthreeengversion: boolean;
+  substitudedegree: boolean;
+
+  @Column({ type: "boolean", width: 3 })
+  substitudedegreethaiversion: boolean;
 
   @Column({ type: "tinyint", width: 3 })
-  dpmlvthreeuniteng: number;
+  substitudedegreeunitthai: number;
 
   @Column({ type: "boolean", width: 3 })
-  dimplomalvfour: boolean;
+  Translationdimploma: boolean;
 
   @Column({ type: "boolean", width: 3 })
-  dpmlvfourthaiversion: boolean;
+  Translationdimplomaengversion: boolean;
 
   @Column({ type: "tinyint", width: 3 })
-  dpmlvfourunitthai: number;
+  Translationdimplomauniteng: number;
 
   @Column({ type: "boolean", width: 3 })
-  dpmlvfourengversion: boolean;
+  Translationdegree: boolean;
+
+  @Column({ type: "boolean", width: 3 })
+  Translationdegreeengversion: boolean;
 
   @Column({ type: "tinyint", width: 3 })
-  dpmlvfouruniteng: number;
+  Translationdegreeuniteng: number;
+
+  @Column({ type: "boolean", width: 3 })
+  othersuccessstudy: boolean;
+
+  @Column({ type: "boolean", width: 3 })
+  othersuccessstudythaiversion: boolean;
 
   @Column({ type: "tinyint", width: 3 })
-  loststudentcard: number;
+  othersuccessstudyunitthai: number;
 
   @Column({ type: "boolean", width: 3 })
-  certificateunit: boolean;
-
-  @Column({ type: "boolean", width: 3 })
-  ctfcthaiversion: boolean;
+  othersuccessstudyengversion: boolean;
 
   @Column({ type: "tinyint", width: 3 })
-  ctfcunitthai: number;
+  othersuccessstudyuniteng: number;
 
-  @Column({ type: "varchar", length: 128 })
-  othermassege: string;
-
-  @Column({ type: "boolean", width: 3 })
-  otherdocument: boolean;
-
-  @Column({ type: "boolean", width: 3 })
-  otherdocthaiversion: boolean;
-
-  @Column({ type: "tinyint", width: 3 })
-  otherdocunitthai: number;
+  @Column({ type: "varchar", length: 255 })
+  othersuccessstudymessage: string;
 
   @Column({ type: "varchar", length: 255, nullable: true })
   signature_std: string;

@@ -45,11 +45,20 @@ export class fte_document_type_six extends BaseEntity {
   @Column({ type: "tinyint", width: 3 })
   termtotalunit: number;
 
-  @Column({ type: "tinyint", width: 3 })
-  addregisterunit: number;
+  @Column({ type: "varchar", length: 128 })
+  dear: string;
+
+  @Column({ type: "varchar", length: 128 })
+  classyear: string;
+
+  @Column({ type: "varchar", length: 128 })
+  since: string;
 
   @Column({ type: "tinyint", width: 3 })
-  termsumtotalunit: number;
+  timestudy: number;
+
+  @Column({ type: "tinyint", width: 3 })
+  PlsRegisOverLow: number;
 
   @CreateDateColumn()
   created: Date;

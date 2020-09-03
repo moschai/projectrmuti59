@@ -29,11 +29,23 @@ export class CreateDocumentSixDto {
   @IsNumberString()
   termtotalunit: number;
 
-  @IsNumberString()
-  addregisterunit: number;
+  @IsString()
+  @MaxLength(128)
+  classyear: string;
+
+  @IsString()
+  @MaxLength(128)
+  since: string;
 
   @IsNumberString()
-  termsumtotalunit: number;
+  timestudy: number;
+
+  @IsNumberString()
+  PlsRegisOverLow: number;
+
+  @IsString()
+  @MaxLength(128)
+  dear: string;
 
   //ส่วนของ นักศึกษา
   @IsString()
@@ -52,7 +64,11 @@ export class CreateDocumentSixDto {
   @Length(10, 10)
   phone_std: string;
 
-  @IsNumberString()
+  @IsString()
+  @MaxLength(255)
+  email_std: string;
+
+  @IsNumber()
   lveducation: LevelEducation;
 
   @IsNumber()

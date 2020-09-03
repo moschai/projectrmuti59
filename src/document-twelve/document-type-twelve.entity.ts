@@ -45,6 +45,18 @@ export class fte_document_type_twelve extends BaseEntity {
   @Column({ type: "varchar", length: 255 })
   signatureparent: string;
 
+  @Column({ type: "varchar", length: 128 })
+  dayborn: string;
+
+  @Column({ type: "varchar", length: 128 })
+  monthborn: string;
+
+  @Column({ type: "varchar", length: 128 })
+  yearborn: string;
+
+  @Column({ type: "varchar", length: 128 })
+  ageborn: string;
+
   @CreateDateColumn()
   created: Date;
 

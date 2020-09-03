@@ -40,17 +40,14 @@ export class fte_document_type_seven extends BaseEntity {
   @Column({ type: "tinyint", width: 3 })
   termregister: number;
 
-  @Column({ type: "tinyint", width: 3 })
-  yearregister: number;
+  @Column({ type: "varchar", length: 128 })
+  yearregister: string;
+
+  @Column({ type: "varchar", length: 128 })
+  classyear: string;
 
   @Column({ type: "tinyint", width: 3 })
-  termtotalunit: number;
-
-  @Column({ type: "tinyint", width: 3 })
-  withdrawregisterunit: number;
-
-  @Column({ type: "tinyint", width: 3 })
-  remainunit: number;
+  timestudy: number;
 
   @CreateDateColumn()
   created: Date;

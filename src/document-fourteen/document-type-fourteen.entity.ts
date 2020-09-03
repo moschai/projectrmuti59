@@ -30,6 +30,15 @@ export class fte_document_type_fourteen extends BaseEntity {
   @Column({ type: "varchar", length: 512 })
   behavioralreceipt: string;
 
+  @Column({ type: "varchar", length: 128 })
+  classyear: string;
+
+  @Column({ type: "tinyint", width: 3 })
+  timestudy: number;
+
+  @Column({ type: "varchar", length: 128 })
+  dear: string;
+
   @CreateDateColumn()
   created: Date;
 

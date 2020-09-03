@@ -30,6 +30,22 @@ export class CreateDocumentTwelveDto {
   @Length(10, 10)
   phoneparent: string;
 
+  @IsString()
+  @MaxLength(128)
+  dayborn: string;
+
+  @IsString()
+  @MaxLength(128)
+  monthborn: string;
+
+  @IsString()
+  @MaxLength(128)
+  yearborn: string;
+
+  @IsString()
+  @MaxLength(128)
+  ageborn: string;
+
   //ส่วนของ นักศึกษา
   @IsString()
   @MaxLength(50)
@@ -47,7 +63,11 @@ export class CreateDocumentTwelveDto {
   @Length(10, 10)
   phone_std: string;
 
-  @IsNumberString()
+  @IsString()
+  @MaxLength(255)
+  email_std: string;
+
+  @IsNumber()
   lveducation: LevelEducation;
 
   @IsNumber()

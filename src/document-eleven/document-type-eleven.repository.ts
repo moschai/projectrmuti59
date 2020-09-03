@@ -4,19 +4,19 @@ import { CreateDocumentElevenDto } from "./dto/create-document-eleven.dto";
 import { fte_signature_eleven } from "./signature-eleven.entity";
 
 @EntityRepository(fte_document_type_eleven)
-export class DocumentTypeElevenRepository extends Repository<fte_document_type_eleven>{
-    async createDocumentEleven(
-        createDocumentElevenDto: CreateDocumentElevenDto,
-        signatureEleven: fte_signature_eleven
-    ): Promise<fte_document_type_eleven> {
-        const documentEleven = new fte_document_type_eleven();
-        documentEleven.changehistory = createDocumentElevenDto.changehistory;
-        documentEleven.otherchangehistory = createDocumentElevenDto.otherchangehistory;
-        documentEleven.oldhistory = createDocumentElevenDto.oldhistory;
-        documentEleven.newhistory = createDocumentElevenDto.newhistory;
-        documentEleven.newnamehistory = createDocumentElevenDto.newnamehistory;
-        documentEleven.signature = signatureEleven;
+export class DocumentTypeElevenRepository extends Repository<
+  fte_document_type_eleven
+> {
+  async createDocumentEleven(
+    createDocumentElevenDto: CreateDocumentElevenDto,
+    signatureEleven: fte_signature_eleven
+  ): Promise<fte_document_type_eleven> {
+    const documentEleven = new fte_document_type_eleven();
+    documentEleven.changehistory = createDocumentElevenDto.changehistory;
+    documentEleven.otherdocument = createDocumentElevenDto.otherdocument;
+    documentEleven.othermassege = createDocumentElevenDto.othermassege;
+    documentEleven.signature = signatureEleven;
 
-        return await documentEleven.save();
-    }
+    return await documentEleven.save();
+  }
 }

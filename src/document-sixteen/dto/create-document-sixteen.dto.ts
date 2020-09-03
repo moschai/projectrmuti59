@@ -12,12 +12,13 @@ export class CreateDocumentSixteenDto {
   @IsNumberString()
   delaygraduationterm: number;
 
-  @IsNumberString()
-  delaygraduationyear: number;
+  @IsString()
+  @MaxLength(128)
+  delaygraduationyear: string;
 
   @IsString()
-  @MaxLength(512)
-  delaygraduationsince: string;
+  @MaxLength(255)
+  since: string;
 
   @IsString()
   @MaxLength(128)
@@ -26,8 +27,10 @@ export class CreateDocumentSixteenDto {
   @IsNumberString()
   timestudy: number;
 
-  @IsNumberString()
-  typestudy: number;
+  @IsString()
+  @MaxLength(128)
+  dear: string;
+
   //ส่วนของ นักศึกษา
   @IsString()
   @MaxLength(50)
@@ -45,7 +48,11 @@ export class CreateDocumentSixteenDto {
   @Length(10, 10)
   phone_std: string;
 
-  @IsNumberString()
+  @IsString()
+  @MaxLength(255)
+  email_std: string;
+
+  @IsNumber()
   lveducation: LevelEducation;
   @IsNumber()
   advisor_id: number;

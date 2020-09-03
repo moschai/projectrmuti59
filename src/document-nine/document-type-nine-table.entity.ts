@@ -25,6 +25,10 @@ export class fte_document_type_nine_table extends BaseEntity {
   @JoinColumn({ name: "idType" })
   type: fte_document_type_nine;
 
+  @ManyToOne((type) => fte_subject, { eager: true })
+  @JoinColumn({ name: "id_subject" })
+  id_subject: fte_subject;
+
   @OneToOne((type) => fte_subject, { eager: true })
   @JoinColumn({ name: "subject" })
   subject: fte_subject;
@@ -34,6 +38,12 @@ export class fte_document_type_nine_table extends BaseEntity {
 
   @Column({ type: "varchar", length: 128 })
   namesubject: string;
+
+  @Column({ type: "varchar", length: 255, nullable: true })
+  path_signature: string;
+
+  @Column({ type: "boolean", default: false })
+  is_success: boolean;
 
   @CreateDateColumn()
   created: Date;

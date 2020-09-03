@@ -17,11 +17,20 @@ export class CreateDocumentFiveDto {
   @IsNumberString()
   takeleaveterm: number;
 
-  @IsNumberString()
-  takeleaveyear: number;
+  @IsString()
+  @MaxLength(10)
+  takeleaveyear: string;
 
   @IsNumberString()
   takeleaveno: number;
+
+  @IsString()
+  @MaxLength(128)
+  dear: string;
+
+  @IsString()
+  @MaxLength(128)
+  cumulativeGpa: string;
 
   @IsString()
   @MaxLength(512)
@@ -44,7 +53,11 @@ export class CreateDocumentFiveDto {
   @Length(10, 10)
   phone_std: string;
 
-  @IsNumberString()
+  @IsString()
+  @MaxLength(255)
+  email_std: string;
+
+  @IsNumber()
   lveducation: LevelEducation;
 
   @IsNumber()

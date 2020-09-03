@@ -6,28 +6,22 @@ import {
   IsInt,
   IsNumberString,
   IsOptional,
+  IsBoolean,
 } from "class-validator";
 import { LevelEducation } from "src/document/enum/level-education.enum";
 
 export class CreateDocumentElevenDto {
   @IsNumberString()
+  @IsOptional()
   changehistory: number;
 
-  @IsString()
-  @MaxLength(128)
-  otherchangehistory: string;
+  @IsBoolean()
+  @IsOptional()
+  otherdocument: boolean;
 
   @IsString()
   @MaxLength(255)
-  oldhistory: string;
-
-  @IsString()
-  @MaxLength(255)
-  newhistory: string;
-
-  @IsString()
-  @MaxLength(128)
-  newnamehistory: string;
+  othermassege: string;
   //ส่วนของ นักศึกษา
   @IsString()
   @MaxLength(50)
@@ -45,7 +39,11 @@ export class CreateDocumentElevenDto {
   @Length(10, 10)
   phone_std: string;
 
-  @IsNumberString()
+  @IsString()
+  @MaxLength(255)
+  email_std: string;
+
+  @IsNumber()
   lveducation: LevelEducation;
 
   @IsNumber()

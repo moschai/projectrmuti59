@@ -6,6 +6,9 @@ export class NineTableDto {
   subjectno: number;
 
   @IsString()
+  id_subject: string;
+
+  @IsString()
   @MaxLength(128)
   namesubject: string;
 

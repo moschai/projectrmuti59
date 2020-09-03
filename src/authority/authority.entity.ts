@@ -57,6 +57,7 @@ export class fte_authority extends BaseEntity {
   salt: string;
 
   async validatePassword(password: string): Promise<boolean> {
+    // console.log(password, this.salt);
     const hash = await bcrypt.hash(password, this.salt);
     return hash === this.password;
   }

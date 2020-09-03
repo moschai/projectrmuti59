@@ -12,14 +12,23 @@ export class CreateDocumentThreeDto {
   @IsNumberString()
   leaveterm: number;
 
-  @IsNumberString()
-  leaveyear: number;
+  @IsString()
+  @MaxLength(10)
+  leaveyear: string;
 
   @IsNumberString()
   returnterm: number;
 
+  @IsString()
+  @MaxLength(10)
+  returnyear: string;
+
+  @IsString()
+  @MaxLength(128)
+  classyear: string;
+
   @IsNumberString()
-  returnyear: number;
+  timestudy: number;
 
   //ส่วนของ นักศึกษา
   @IsString()
@@ -38,7 +47,11 @@ export class CreateDocumentThreeDto {
   @Length(10, 10)
   phone_std: string;
 
-  @IsNumberString()
+  @IsString()
+  @MaxLength(255)
+  email_std: string;
+
+  @IsNumber()
   lveducation: LevelEducation;
 
   //ส่วนของอาจารย์

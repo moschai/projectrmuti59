@@ -9,6 +9,7 @@ import {
   IsArray,
   IsNotEmpty,
   ValidateNested,
+  IsBoolean,
 } from "class-validator";
 import { LevelEducation } from "src/document/enum/level-education.enum";
 import { Type } from "class-transformer";
@@ -24,15 +25,33 @@ export class CreateDocumentNineDto {
   @IsNumberString()
   lastepaymentterm: number;
 
+  @IsString()
+  @MaxLength(128)
+  latepaymentyear: string;
+
   @IsNumberString()
-  latepaymentyear: number;
+  @IsOptional()
+  topic: number;
+
+  @IsBoolean()
+  @IsOptional()
+  otherdocument: boolean;
 
   @IsString()
-  @MaxLength(512)
-  latepaymentsince: string;
+  @MaxLength(255)
+  @IsOptional()
+  othermassege: string;
+
+  @IsString()
+  @MaxLength(128)
+  dear: string;
+
+  @IsString()
+  @MaxLength(128)
+  classyear: string;
 
   @IsNumberString()
-  topic: number;
+  timestudy: number;
 
   //ส่วนของ นักศึกษา
   @IsString()
@@ -51,7 +70,11 @@ export class CreateDocumentNineDto {
   @Length(10, 10)
   phone_std: string;
 
-  @IsNumberString()
+  @IsString()
+  @MaxLength(255)
+  email_std: string;
+
+  @IsNumber()
   lveducation: LevelEducation;
 
   @IsNumber()

@@ -42,17 +42,8 @@ export class fte_document_type_nine extends BaseEntity {
   @Column({ type: "tinyint", width: 5 })
   latepaymentterm: number;
 
-  @Column({ type: "tinyint", width: 5 })
-  latepaymentyear: number;
-
-  @Column({ type: "varchar", length: 512 })
-  latepaymentsince: string;
-
-  @Column({ type: "tinyint", width: 5 })
-  certificateterm: number;
-
-  @Column({ type: "tinyint", width: 5 })
-  certificateyear: number;
+  @Column({ type: "varchar", length: 128 })
+  latepaymentyear: string;
 
   @Column({ type: "tinyint", width: 15 })
   idsubject: number;
@@ -68,6 +59,21 @@ export class fte_document_type_nine extends BaseEntity {
 
   @Column({ type: "varchar", length: 255 })
   signatureteacher: string;
+
+  @Column({ type: "varchar", length: 128 })
+  othermassege: string;
+
+  @Column({ type: "boolean", width: 3 })
+  otherdocument: boolean;
+
+  @Column({ type: "varchar", length: 128 })
+  dear: string;
+
+  @Column({ type: "varchar", length: 128 })
+  classyear: string;
+
+  @Column({ type: "tinyint", width: 3 })
+  timestudy: number;
 
   @CreateDateColumn()
   created: Date;

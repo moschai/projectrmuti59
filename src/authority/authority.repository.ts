@@ -42,7 +42,19 @@ export class AuthorityRepository extends Repository<fte_authority> {
 
   async validateAuthorityPassword(authorityAuthDto: AuthorityAuthDto) {
     const { username, password } = authorityAuthDto;
-    const authority = await this.findOne({ username });
+    const authority = await this.findOne({
+      where: { username },
+      relations: ["faculty"],
+      select: [
+        "username",
+        "password",
+        "salt",
+        "id_authority",
+        "name_authority",
+        "surname_authority",
+        "position_authority",
+      ],
+    });
     if (authority && (await authority.validatePassword(password))) {
       return authority;
     } else {

@@ -232,7 +232,7 @@ export class DocumentRepository extends Repository<fte_document> {
     document.student = student;
     document.type_ten = documentTen;
     document.type_document = 10;
-    document.nextSignature = documentTen.signature.advisor_id;
+    document.nextSignature = documentTen.signature.boardsubjectone_id;
     document.hasTableSignature = true;
     return await document.save();
   }
@@ -257,7 +257,7 @@ export class DocumentRepository extends Repository<fte_document> {
     document.student = student;
     document.type_seventeen = documentSeventeen;
     document.type_document = 17;
-    document.nextSignature = documentSeventeen.signature.teacherteath_id;
+    document.nextSignature = documentSeventeen.signature.advisor_id;
     return await document.save();
   }
 

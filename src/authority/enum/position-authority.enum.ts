@@ -1,8 +1,10 @@
 export enum EPositionAuthority {
   "headServiceDeanoffice" = "หัวหน้างานบริการหรือหัวหน้างานสำนักคณะบดี",
   "deputyDeanResearch" = "รองคณะบดีผ่ายวิชาการและวิจัย",
+  "headStudentDevelopment" = "หัวหน้าแผนกงานพัฒนานักศึกษาประจำคณะ",
+  "deputyDeanStdDvlment" = "รองคณะบดีผ่ายพัฒนานักศึกษาประจำคณะ",
   "dean" = "คณะบดี",
-  "authorityactivity" = "งานนักศึกษาประจำคณะ",
+  "authorityactivity" = "งานพัฒนานักศึกษาประจำคณะ",
   "boardsubjectone" = "คณะกรรมการประจำหลักสูตรคนที่1",
   "boardsubjecttwo" = "คณะกรรมการประจำหลักสูตรคนที่2",
   "boardsubjectthree" = "คณะกรรมการประจำหลักสูตรคนที่3",

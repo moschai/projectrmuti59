@@ -5,14 +5,17 @@ export class TenTableDto {
   // subject: string;
 
   @IsString()
-  idcompare: string;
-
-  @IsString()
   @MaxLength(128)
   namecompare: string;
 
   @IsNumber()
   unitcompare: number;
+
+  @IsString()
+  id_subject: string;
+
+  @IsString()
+  id_subjectnew: string;
 
   @IsNumber()
   advisor: number;

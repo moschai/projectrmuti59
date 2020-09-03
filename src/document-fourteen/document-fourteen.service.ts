@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import {
+  Injectable,
+  NotFoundException,
+  ConflictException,
+} from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { DocumentRepository } from "src/document/document.repository";
 import { StudentRepository } from "src/student/student.repository";
@@ -7,6 +11,9 @@ import { SignatureFourteenRepository } from "./signature-fourteen.repository";
 import { AuthorityRepository } from "src/authority/authority.repository";
 import { CreateDocumentFourteenDto } from "./dto/create-document-fourteen.dto";
 import { EPositionAuthority } from "src/authority/enum/position-authority.enum";
+import { SignatureStatus } from "src/document/enum/signature-status.enum";
+import { AuthorityApprovedDto } from "src/document-one/dto/authority-approved.dto";
+import { fte_authority } from "src/authority/authority.entity";
 
 @Injectable()
 export class DocumentFourteenService {
@@ -35,18 +42,22 @@ export class DocumentFourteenService {
     if (!mastersubject) {
       throw new NotFoundException("รหัสหัวหน้าสาขาวิชาไม่ถูกต้อง");
     }
-    const head_service_or_deanoffice = await this.authorityRepo.findOne({
-      where: { position_authority: EPositionAuthority.headServiceDeanoffice },
+    const headstudentdevelopment = await this.authorityRepo.findOne({
+      where: { position_authority: EPositionAuthority.headStudentDevelopment },
     });
-    if (!head_service_or_deanoffice) {
+    if (!headstudentdevelopment) {
       throw new NotFoundException("1");
     }
-    const deputy_dean_research = await this.authorityRepo.findOne({
-      where: { position_authority: EPositionAuthority.deputyDeanResearch },
+
+    const deputydeanstudentdevelopment = await this.authorityRepo.findOne({
+      where: {
+        position_authority: EPositionAuthority.deputyDeanStdDvlment,
+      },
     });
-    if (!deputy_dean_research) {
+    if (!deputydeanstudentdevelopment) {
       throw new NotFoundException("2");
     }
+
     const dean = await this.authorityRepo.findOne({
       where: { position_authority: EPositionAuthority.dean },
     });
@@ -60,8 +71,8 @@ export class DocumentFourteenService {
       createDocumentFourteenDto,
       advisor,
       mastersubject,
-      head_service_or_deanoffice,
-      deputy_dean_research,
+      headstudentdevelopment,
+      deputydeanstudentdevelopment,
       dean
     );
     const documentFourteen = await this.docTypeFourteenRepo.createDocumentFourteen(
@@ -73,5 +84,93 @@ export class DocumentFourteenService {
       documentFourteen
     );
     //สร้างนักศึกษา -> สร้างลายเซ็น -> สร้าง doc type -> สร้าง doc
+  }
+  async getDocumentFourteenByDocumentId(documentId: number) {
+    const document = await this.documentRepo.findOne({
+      relations: ["type_fourteen"],
+      where: { id: documentId },
+    });
+    if (!document) {
+      throw new NotFoundException("document not found");
+    }
+    return document;
+  }
+
+  async authorityApproved(
+    documentId: number,
+    authority: fte_authority,
+    authorityApprovedDto: AuthorityApprovedDto
+  ) {
+    const document = await this.getDocumentFourteenByDocumentId(documentId);
+    const documentCheck = { ...document };
+    if (documentCheck.number_sig === 1) {
+      if (
+        document.type_fourteen.signature.advisor_id.id_authority !==
+        authority.id_authority
+      ) {
+        throw new ConflictException("การอนุมัติไม่ถูกต้อง");
+      }
+      document.number_sig = 2;
+      document.nextSignature =
+        document.type_fourteen.signature.mastersubject_id;
+      document.type_fourteen.signature.advisor_status_sig =
+        SignatureStatus.approved;
+      document.type_fourteen.signature.advisor_path_sig =
+        authorityApprovedDto.filename;
+      document.type_fourteen.signature.advisor_comment =
+        authorityApprovedDto.comment;
+      document.type_fourteen.signature.advisor_time = new Date();
+    }
+    if (documentCheck.number_sig === 2) {
+      document.number_sig = 3;
+      document.nextSignature =
+        document.type_fourteen.signature.head_student_development_id;
+      document.type_fourteen.signature.mastersubject_status_sig =
+        SignatureStatus.approved;
+      document.type_fourteen.signature.mastersubject_path_sig =
+        authorityApprovedDto.filename;
+      document.type_fourteen.signature.mastersubject_comment =
+        authorityApprovedDto.comment;
+      document.type_fourteen.signature.mastersubject_time = new Date();
+    }
+    if (documentCheck.number_sig === 3) {
+      document.number_sig = 4;
+      document.nextSignature =
+        document.type_fourteen.signature.deputy_dean_student_development_id;
+      document.type_fourteen.signature.head_student_development_status_sig =
+        SignatureStatus.approved;
+      document.type_fourteen.signature.head_student_development_path_sig =
+        authorityApprovedDto.filename;
+      document.type_fourteen.signature.head_student_development_comment =
+        authorityApprovedDto.comment;
+      document.type_fourteen.signature.head_student_development_time = new Date();
+    }
+    if (documentCheck.number_sig === 4) {
+      document.number_sig = 5;
+      document.nextSignature = document.type_fourteen.signature.dean_id;
+      document.type_fourteen.signature.deputy_dean_student_development_status_sig =
+        SignatureStatus.approved;
+      document.type_fourteen.signature.head_student_development_path_sig =
+        authorityApprovedDto.filename;
+      document.type_fourteen.signature.deputy_dean_student_development_comment =
+        authorityApprovedDto.comment;
+      document.type_fourteen.signature.deputy_dean_student_development_time = new Date();
+    }
+    if (documentCheck.number_sig === 5) {
+      if (authorityApprovedDto.notApproved) {
+        document.type_fourteen.signature.dean_status_sig =
+          SignatureStatus.notApproved;
+      } else {
+        document.type_fourteen.signature.dean_status_sig =
+          SignatureStatus.approved;
+      }
+      document.type_fourteen.signature.dean_path_sig =
+        authorityApprovedDto.filename;
+      document.type_fourteen.signature.dean_time = new Date();
+      document.isAllSignature = true;
+    }
+
+    await document.type_fourteen.signature.save();
+    return await document.save();
   }
 }

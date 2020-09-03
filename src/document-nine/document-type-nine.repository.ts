@@ -15,7 +15,11 @@ export class DocumentTypeNineRepository extends Repository<
     documentNine.topic = createDocumentNineDto.topic;
     documentNine.latepaymentterm = createDocumentNineDto.lastepaymentterm;
     documentNine.latepaymentyear = createDocumentNineDto.latepaymentyear;
-    documentNine.latepaymentsince = createDocumentNineDto.latepaymentsince;
+    documentNine.othermassege = createDocumentNineDto.othermassege;
+    documentNine.otherdocument = createDocumentNineDto.otherdocument;
+    documentNine.dear = createDocumentNineDto.dear;
+    documentNine.classyear = createDocumentNineDto.classyear;
+    documentNine.timestudy = createDocumentNineDto.timestudy;
     documentNine.signature = signatureNine;
 
     return await documentNine.save();

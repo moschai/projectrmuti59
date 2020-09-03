@@ -14,6 +14,17 @@ export class CreateDocumentFourteenDto {
   @MaxLength(512)
   behavioralreceipt: string;
 
+  @IsString()
+  @MaxLength(128)
+  classyear: string;
+
+  @IsNumberString()
+  timestudy: number;
+
+  @IsString()
+  @MaxLength(128)
+  dear: string;
+
   //ส่วนของ นักศึกษา
   @IsString()
   @MaxLength(50)
@@ -31,7 +42,11 @@ export class CreateDocumentFourteenDto {
   @Length(10, 10)
   phone_std: string;
 
-  @IsNumberString()
+  @IsString()
+  @MaxLength(255)
+  email_std: string;
+
+  @IsNumber()
   lveducation: LevelEducation;
   @IsNumber()
   advisor_id: number;
@@ -41,11 +56,11 @@ export class CreateDocumentFourteenDto {
 
   @IsNumber()
   @IsOptional()
-  head_service_or_deanoffice_id: number;
+  head_student_development_id: number;
 
   @IsNumber()
   @IsOptional()
-  deputy_dean_research_id: number;
+  deputy_dean_student_development_id: number;
 
   @IsNumber()
   @IsOptional()

@@ -4,7 +4,7 @@ import { fte_document_type_six } from "./document-type-six.entity";
 import { CreateDocumentSixDto } from "./dto/create-document-six.dto";
 
 @EntityRepository(fte_document_type_six_table)
-export class DocuemntSixTableRepository extends Repository<
+export class DocumentSixTableRepository extends Repository<
   fte_document_type_six_table
 > {
   async createTableSix(

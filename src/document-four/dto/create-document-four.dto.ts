@@ -11,18 +11,31 @@ import { LevelEducation } from "src/document/enum/level-education.enum";
 
 export class CreateDocumentFourDto {
   @IsNumberString()
-  overlowstandard: number;
-
-  @IsNumberString()
-  termunit: number;
-
-  @IsNumberString()
   sumorremainunit: number;
+
+  @IsNumberString()
+  overlowstandard: number;
 
   @IsString()
   @MinLength(0)
   @MaxLength(512)
   overslowstandardsince: string;
+
+  @IsString()
+  @MaxLength(128)
+  dear: string;
+
+  @IsString()
+  @MaxLength(128)
+  termstudy: string;
+
+  @IsString()
+  @MaxLength(128)
+  yearstudy: string;
+
+  @IsString()
+  @MaxLength(128)
+  cumulativeGpa: string;
 
   //ส่วนของ นักศึกษา
   @IsString()
@@ -41,7 +54,11 @@ export class CreateDocumentFourDto {
   @Length(10, 10)
   phone_std: string;
 
-  @IsNumberString()
+  @IsString()
+  @MaxLength(255)
+  email_std: string;
+
+  @IsNumber()
   lveducation: LevelEducation;
 
   @IsNumber()

@@ -58,6 +58,12 @@ export class fte_student extends BaseEntity {
   @Column({ length: 10, type: "varchar", nullable: false })
   phone_std: string;
 
+  @Column({ length: 255, type: "varchar", nullable: false })
+  email_std: string;
+
+  @Column({ length: 255, type: "varchar", nullable: false })
+  signature_std: string;
+
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   created: Date;
 

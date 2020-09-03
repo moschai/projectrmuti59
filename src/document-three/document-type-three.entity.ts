@@ -30,14 +30,20 @@ export class fte_document_type_three extends BaseEntity {
   @Column({ type: "tinyint", width: 5 })
   leaveterm: number;
 
-  @Column({ type: "tinyint", width: 5 })
-  leaveyear: number;
+  @Column({ type: "varchar", length: 10 })
+  leaveyear: string;
 
   @Column({ type: "tinyint", width: 5 })
   returnterm: number;
 
-  @Column({ type: "tinyint", width: 5 })
-  returnyear: number;
+  @Column({ type: "varchar", length: 10 })
+  returnyear: string;
+
+  @Column({ type: "varchar", length: 128 })
+  classyear: string;
+
+  @Column({ type: "tinyint", width: 3 })
+  timestudy: number;
 
   @CreateDateColumn()
   created: Date;

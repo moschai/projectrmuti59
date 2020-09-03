@@ -7,7 +7,7 @@ import { StudentRepository } from "src/student/student.repository";
 import { AuthorityRepository } from "src/authority/authority.repository";
 import { DocumentTypeNineRepository } from "./document-type-nine.repository";
 import { SignatureNineRepository } from "./signature-nine.repository";
-import { DocuemntNineTableRepository } from "./document-nine-table.repository";
+import { DocumentNineTableRepository } from "./document-nine-table.repository";
 
 @Module({
   imports: [
@@ -17,7 +17,7 @@ import { DocuemntNineTableRepository } from "./document-nine-table.repository";
       AuthorityRepository,
       DocumentTypeNineRepository,
       SignatureNineRepository,
-      DocuemntNineTableRepository,
+      DocumentNineTableRepository,
     ]),
   ],
   controllers: [DocumentNineController],

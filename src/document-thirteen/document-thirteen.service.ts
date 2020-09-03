@@ -35,4 +35,15 @@ export class DocumentThirteenService {
       documentSixteen
     );
   }
+
+  async getDocumentThirteenByDocumentId(documentId: number) {
+    const document = await this.documentRepo.findOne({
+      relations: ["type_thirteen"],
+      where: { id: documentId },
+    });
+    if (!document) {
+      throw new NotFoundException("document not found");
+    }
+    return document;
+  }
 }

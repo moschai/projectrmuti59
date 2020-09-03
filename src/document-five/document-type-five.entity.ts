@@ -34,14 +34,20 @@ export class fte_document_type_five extends BaseEntity {
   @Column({ type: "tinyint", width: 5 })
   takeleaveterm: number;
 
-  @Column({ type: "tinyint", width: 5 })
-  takeleaveyear: number;
+  @Column({ type: "varchar", length: 10 })
+  takeleaveyear: string;
 
   @Column({ type: "tinyint", width: 5 })
   takeleaveno: number;
 
   @Column({ type: "varchar", length: 512 })
   since: string;
+
+  @Column({ type: "varchar", length: 128 })
+  dear: string;
+
+  @Column({ type: "varchar", length: 128 })
+  cumulativeGpa: string;
 
   @CreateDateColumn()
   created: Date;

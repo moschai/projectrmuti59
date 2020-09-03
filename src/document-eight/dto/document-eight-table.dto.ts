@@ -6,6 +6,9 @@ export class EightTableDto {
   idsubject: number;
 
   @IsString()
+  id_subject: string;
+
+  @IsString()
   @MaxLength(128)
   namesubject: string;
 
@@ -27,4 +30,7 @@ export class EightTableDto {
 
   @IsNumber()
   advisor: number;
+
+  @IsNumber()
+  advisornew: number;
 }

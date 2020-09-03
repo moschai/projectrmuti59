@@ -12,6 +12,9 @@ export class SixTableDto {
   subjectno: number;
 
   @IsString()
+  id_subject: string;
+
+  @IsString()
   @MaxLength(128)
   namesubject: string;
 
@@ -22,12 +25,6 @@ export class SixTableDto {
   // @IsString()
   // @MaxLength(255)
   // signature: string;
-
-  @IsString()
-  @IsOptional()
-  @MinLength(0)
-  @MaxLength(255)
-  note: string;
 
   @IsNumber()
   advisor: number;

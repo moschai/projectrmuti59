@@ -36,33 +36,6 @@ export class fte_document_type_seventeen extends BaseEntity {
   )
   tables: fte_document_type_seventeen_table[];
 
-  @Column({ type: "varchar", length: 50 })
-  idsubject: string;
-
-  @Column({ type: "varchar", length: 128 })
-  namesubject: string;
-
-  @Column({ type: "varchar", length: 128 })
-  groupstudy: string;
-
-  @Column({ type: "tinyint", width: 3 })
-  registernow: number;
-
-  @Column({ type: "tinyint", width: 3 })
-  registeradd: number;
-
-  @Column({ type: "varchar", length: 50 })
-  pastidsubject: string;
-
-  @Column({ type: "varchar", length: 128 })
-  pastnamesubject: string;
-
-  @Column({ type: "varchar", length: 50 })
-  newidsubject: string;
-
-  @Column({ type: "varchar", length: 128 })
-  newnamesubject: string;
-
   @Column({ type: "varchar", length: 255 })
   signaturestd: string;
 

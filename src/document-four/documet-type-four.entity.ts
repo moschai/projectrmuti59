@@ -28,16 +28,25 @@ export class fte_document_type_four extends BaseEntity {
   signature: fte_signature_four;
 
   @Column({ type: "tinyint", width: 5 })
-  overlowstandard: number;
-
-  @Column({ type: "tinyint", width: 5 })
-  termunit: number;
-
-  @Column({ type: "tinyint", width: 5 })
   sumorremainunit: number;
 
   @Column({ type: "varchar", length: 512 })
   overlowstandardsince: string;
+
+  @Column({ type: "tinyint", width: 5 })
+  overlowstandard: number;
+
+  @Column({ type: "varchar", length: 128 })
+  dear: string;
+
+  @Column({ type: "varchar", length: 128 })
+  termstudy: string;
+
+  @Column({ type: "varchar", length: 128 })
+  yearstudy: string;
+
+  @Column({ type: "varchar", length: 128 })
+  cumulativeGpa: string;
 
   @CreateDateColumn()
   created: Date;

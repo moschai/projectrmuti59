@@ -14,7 +14,7 @@ export class SevenTableDto {
   subjectno: number;
 
   @IsString()
-  subject: string;
+  id_subject: string;
 
   @IsString()
   @MaxLength(128)
@@ -24,5 +24,8 @@ export class SevenTableDto {
   @IsOptional()
   @MinLength(0)
   @MaxLength(255)
-  note: string;
+  statusg: string;
+
+  @IsNumber()
+  advisor: number;
 }

@@ -30,11 +30,11 @@ export class fte_document_type_sixteen extends BaseEntity {
   @Column({ type: "tinyint", width: 5 })
   delaygraduationterm: number;
 
-  @Column({ type: "tinyint", width: 5 })
-  delaygraduationyear: number;
+  @Column({ type: "varchar", length: 128 })
+  delaygraduationyear: string;
 
-  @Column({ type: "varchar", length: 512 })
-  delaygraduationsince: string;
+  @Column({ type: "varchar", length: 255 })
+  since: string;
 
   @Column({ type: "varchar", length: 128 })
   classyear: string;
@@ -42,8 +42,8 @@ export class fte_document_type_sixteen extends BaseEntity {
   @Column({ type: "tinyint", width: 3 })
   timestudy: number;
 
-  @Column({ type: "tinyint", width: 5 })
-  typestudy: number;
+  @Column({ type: "varchar", length: 128 })
+  dear: string;
 
   @CreateDateColumn()
   created: Date;

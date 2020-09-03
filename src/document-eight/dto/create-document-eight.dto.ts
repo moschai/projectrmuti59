@@ -9,6 +9,7 @@ import {
   IsInt,
   IsNumberString,
   IsOptional,
+  IsBoolean,
 } from "class-validator";
 import { Type } from "class-transformer";
 import { EightTableDto } from "./document-eight-table.dto";
@@ -23,12 +24,38 @@ export class CreateDocumentEightDto {
   @IsNumberString()
   movinggroupterm: number;
 
-  @IsNumberString()
-  movinggroupyear: number;
+  @IsString()
+  @MaxLength(128)
+  movinggroupyear: string;
 
   @IsString()
-  @MaxLength(512)
-  movinggroupsince: string;
+  @MaxLength(128)
+  termstudy: string;
+
+  @IsString()
+  @MaxLength(128)
+  yearstudy: string;
+
+  @IsString()
+  @MaxLength(128)
+  classyear: string;
+
+  @IsString()
+  @MaxLength(128)
+  timestudy: string;
+
+  @IsNumberString()
+  @IsOptional()
+  since: number;
+
+  @IsBoolean()
+  @IsOptional()
+  otherdocument: boolean;
+
+  @IsString()
+  @MaxLength(255)
+  @IsOptional()
+  othermassege: string;
 
   //ส่วนของ นักศึกษา
   @IsString()
@@ -47,24 +74,16 @@ export class CreateDocumentEightDto {
   @Length(10, 10)
   phone_std: string;
 
-  @IsNumberString()
+  @IsString()
+  @MaxLength(255)
+  email_std: string;
+
+  @IsNumber()
   lveducation: LevelEducation;
 
   @IsNumber()
   advisor_id: number;
 
   @IsNumber()
-  mastersubject_id: number;
-
-  @IsNumber()
-  @IsOptional()
-  head_service_or_deanoffice_id: number;
-
-  @IsNumber()
-  @IsOptional()
-  deputy_dean_research_id: number;
-
-  @IsNumber()
-  @IsOptional()
-  dean_id: number;
+  advisornew_id: number;
 }

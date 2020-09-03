@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
+import {
+  Injectable,
+  NotFoundException,
+  ConflictException,
+} from "@nestjs/common";
 import { DocumentRepository } from "src/document/document.repository";
 import { InjectRepository } from "@nestjs/typeorm";
 import { StudentRepository } from "src/student/student.repository";
@@ -6,8 +10,11 @@ import { DocumentTypeSevenRepository } from "./document-type-seven.repository";
 import { SignatureSevenRepository } from "./signature-seven.repository";
 import { AuthorityRepository } from "src/authority/authority.repository";
 import { CreateDocumentSevenDto } from "./dto/create-document-seven.dto";
-import { DocuemntSevenTableRepository } from "./document-seven-table.repository";
+import { DocumentSevenTableRepository } from "./document-seven-table.repository";
 import { EPositionAuthority } from "src/authority/enum/position-authority.enum";
+import { AuthorityApprovedDto } from "src/document-one/dto/authority-approved.dto";
+import { fte_authority } from "src/authority/authority.entity";
+import { SignatureStatus } from "src/document/enum/signature-status.enum";
 
 @Injectable()
 export class DocumentSevenService {
@@ -22,8 +29,8 @@ export class DocumentSevenService {
     private signatureSevenRepo: SignatureSevenRepository,
     @InjectRepository(AuthorityRepository)
     private authorityRepo: AuthorityRepository,
-    @InjectRepository(DocuemntSevenTableRepository)
-    private docuemntSevenTableRepo: DocuemntSevenTableRepository
+    @InjectRepository(DocumentSevenTableRepository)
+    private documentSevenTableRepo: DocumentSevenTableRepository
   ) {}
 
   async createDocument(createDocumentSevenDto: CreateDocumentSevenDto) {
@@ -33,47 +40,20 @@ export class DocumentSevenService {
     if (!advisor) {
       throw new NotFoundException("รหัสอาจารย์ที่ปรึกษาไม่ถูกต้อง");
     }
-    const mastersubject = await this.authorityRepo.findOne({
-      where: { id_authority: createDocumentSevenDto.mastersubject_id },
-    });
-    if (!mastersubject) {
-      throw new NotFoundException("รหัสหัวหน้าสาขาวิชาไม่ถูกต้อง");
-    }
-    const head_service_or_deanoffice = await this.authorityRepo.findOne({
-      where: { position_authority: EPositionAuthority.headServiceDeanoffice },
-    });
-    if (!head_service_or_deanoffice) {
-      throw new NotFoundException("1");
-    }
-    const deputy_dean_research = await this.authorityRepo.findOne({
-      where: { position_authority: EPositionAuthority.deputyDeanResearch },
-    });
-    if (!deputy_dean_research) {
-      throw new NotFoundException("2");
-    }
-    const dean = await this.authorityRepo.findOne({
-      where: { position_authority: EPositionAuthority.dean },
-    });
-    if (!dean) {
-      throw new NotFoundException("3");
-    }
+
     const student = await this.studentRepo.createStudent(
       createDocumentSevenDto
     );
     const signatureSeven = await this.signatureSevenRepo.createSignature(
       createDocumentSevenDto,
-      advisor,
-      mastersubject,
-      head_service_or_deanoffice,
-      deputy_dean_research,
-      dean
+      advisor
     );
 
     const documentSeven = await this.docTypeSevenRepo.createDocumentSeven(
       createDocumentSevenDto,
       signatureSeven
     );
-    await this.docuemntSevenTableRepo.createTableSeven(
+    await this.documentSevenTableRepo.createTableSeven(
       createDocumentSevenDto,
       documentSeven
     );
@@ -83,5 +63,98 @@ export class DocumentSevenService {
       documentSeven
     );
     //สร้างนักศึกษา -> สร้างลายเซ็น -> สร้าง doc type -> สร้าง doc
+  }
+
+  async getDocumentSevenByDocumentId(documentId: number) {
+    const document = await this.documentRepo.findOne({
+      relations: ["type_seven"],
+      where: { id: documentId },
+    });
+    if (!document) {
+      throw new NotFoundException("document not found");
+    }
+    return document;
+  }
+
+  async authorityApproved(
+    documentId: number,
+    authority: fte_authority,
+    authorityApprovedDto: AuthorityApprovedDto
+  ) {
+    const document = await this.getDocumentSevenByDocumentId(documentId);
+    const documentCheck = { ...document };
+    if (documentCheck.number_sig === 1) {
+      if (
+        document.type_seven.signature.advisor_id.id_authority !==
+        authority.id_authority
+      ) {
+        throw new ConflictException("การอนุมัติไม่ถูกต้อง");
+      }
+      document.type_seven.signature.advisor_status_sig =
+        SignatureStatus.approved;
+      document.type_seven.signature.advisor_path_sig =
+        authorityApprovedDto.filename;
+      document.type_seven.signature.advisor_comment =
+        authorityApprovedDto.comment;
+      document.type_seven.signature.advisor_time = new Date();
+      document.isAllSignature = true;
+    }
+
+    await document.type_seven.signature.save();
+    return await document.save();
+  }
+
+  async getTablesSevenForAuthority(authority: fte_authority) {
+    return await this.documentSevenTableRepo.find({
+      where: { advisor: authority, is_success: false },
+      relations: ["type", "type.document"],
+    });
+  }
+
+  async autorityApprovedTableSeven(
+    authority: fte_authority,
+    tableId: number,
+    authorityApprovedDto: AuthorityApprovedDto
+  ) {
+    const table = await this.documentSevenTableRepo.findOne({
+      relations: ["type", "type.document"],
+      where: {
+        advisor: authority,
+        idtable: tableId,
+      },
+    });
+    if (!table) {
+      throw new NotFoundException("ไม่พบการอนุมัติ");
+    }
+    table.is_success = true;
+    table.path_signature = authorityApprovedDto.filename;
+    await table.save();
+    const approvedAll = await this.documentSevenTableRepo.find({
+      where: {
+        type: table.type,
+        is_success: false,
+      },
+    });
+
+    if (!approvedAll.length) {
+      const document = table.type.document;
+      document.isAllTableSignature = true;
+      await document.save();
+    }
+    return table;
+  }
+
+  async getTableSevenById(tableId: number) {
+    const table = await this.documentSevenTableRepo.findOne({
+      relations: ["type", "type.document"],
+      where: {
+        idtable: tableId,
+      },
+    });
+
+    if (!table) {
+      throw new NotFoundException("table not found");
+    }
+    return table;
   }
 }

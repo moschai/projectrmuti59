@@ -22,15 +22,18 @@ export class CreateDocumentOneDto {
 
   @IsString()
   @MaxLength(128)
-  dear: string;
-
-  @IsString()
-  @MaxLength(128)
   purpose: string;
 
   @IsString()
-  @MaxLength(512)
-  since: string;
+  @MaxLength(128)
+  classyear: string;
+
+  @IsNumberString()
+  timestudy: number;
+
+  @IsString()
+  @MaxLength(128)
+  dear: string;
 
   //ส่วนของ นักศึกษา
   @IsString()
@@ -48,6 +51,14 @@ export class CreateDocumentOneDto {
   @IsString()
   @Length(10, 10)
   phone_std: string;
+
+  @IsString()
+  @MaxLength(255)
+  email_std: string;
+
+  @IsString()
+  @MaxLength(255)
+  signature_std: string;
 
   @IsNumber()
   lveducation: LevelEducation;

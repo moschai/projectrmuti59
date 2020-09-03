@@ -25,18 +25,17 @@ export class CreateDocumentTenDto {
   @IsNumberString()
   compareterm: number;
 
-  @IsNumberString()
-  compareyeat: number;
+  @IsString()
+  @MaxLength(128)
+  compareyeat: string;
 
   @IsString()
   @MaxLength(128)
-  classyear: string;
+  dear: string;
 
-  @IsNumberString()
-  timestudy: number;
-
-  @IsNumberString()
-  typestudy: number;
+  @IsString()
+  @MaxLength(128)
+  cumulativeGpa: string;
 
   //ส่วนของ นักศึกษา
   @IsString()
@@ -55,7 +54,11 @@ export class CreateDocumentTenDto {
   @Length(10, 10)
   phone_std: string;
 
-  @IsNumberString()
+  @IsString()
+  @MaxLength(255)
+  email_std: string;
+
+  @IsNumber()
   lveducation: LevelEducation;
 
   @IsNumber()

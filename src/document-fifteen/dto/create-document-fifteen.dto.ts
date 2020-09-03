@@ -12,18 +12,24 @@ export class CreateDocumentFifteenDto {
   @IsNumberString()
   graduationrequestterm: number;
 
-  @IsNumberString()
-  graduationrequestyear: number;
+  @IsString()
+  @MaxLength(128)
+  graduationrequestyear: string;
 
   @IsString()
   @MaxLength(128)
   classyear: string;
 
+  @IsString()
+  @MaxLength(128)
+  since: string;
+
   @IsNumberString()
   timestudy: number;
 
-  @IsNumberString()
-  typestudy: number;
+  @IsString()
+  @MaxLength(128)
+  dear: string;
   //ส่วนของ นักศึกษา
   @IsString()
   @MaxLength(50)
@@ -41,7 +47,11 @@ export class CreateDocumentFifteenDto {
   @Length(10, 10)
   phone_std: string;
 
-  @IsNumberString()
+  @IsString()
+  @MaxLength(255)
+  email_std: string;
+
+  @IsNumber()
   lveducation: LevelEducation;
 
   @IsNumber()

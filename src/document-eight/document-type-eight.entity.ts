@@ -39,11 +39,29 @@ export class fte_document_type_eight extends BaseEntity {
   @Column({ type: "tinyint", width: 5 })
   movinggroupterm: number;
 
-  @Column({ type: "tinyint", width: 5 })
-  movinggroupyear: number;
+  @Column({ type: "varchar", length: 128 })
+  movinggroupyear: string;
 
-  @Column({ type: "varchar", length: 512 })
-  movinggroupsince: string;
+  @Column({ type: "varchar", length: 128 })
+  termstudy: string;
+
+  @Column({ type: "varchar", length: 128 })
+  yearstudy: string;
+
+  @Column({ type: "varchar", length: 128 })
+  classyear: string;
+
+  @Column({ type: "varchar", length: 128 })
+  timestudy: string;
+
+  @Column({ type: "tinyint", width: 3 })
+  since: number;
+
+  @Column({ type: "varchar", length: 128 })
+  othermassege: string;
+
+  @Column({ type: "boolean", width: 3 })
+  otherdocument: boolean;
 
   @CreateDateColumn()
   created: Date;

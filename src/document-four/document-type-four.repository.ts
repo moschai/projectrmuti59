@@ -12,12 +12,17 @@ export class DocumentTypeFourRepository extends Repository<
     signatureFour: fte_signature_four
   ): Promise<fte_document_type_four> {
     const documentFour = new fte_document_type_four();
-    documentFour.overlowstandard = createDocumentFourDto.overlowstandard;
-    documentFour.termunit = createDocumentFourDto.termunit;
+
     documentFour.sumorremainunit = createDocumentFourDto.sumorremainunit;
     documentFour.overlowstandardsince =
       createDocumentFourDto.overslowstandardsince;
     documentFour.signature = signatureFour;
+    documentFour.dear = createDocumentFourDto.dear;
+    documentFour.termstudy = createDocumentFourDto.termstudy;
+    documentFour.yearstudy = createDocumentFourDto.yearstudy;
+    documentFour.cumulativeGpa = createDocumentFourDto.cumulativeGpa;
+    documentFour.overlowstandard = createDocumentFourDto.overlowstandard;
+
     return await documentFour.save();
   }
 }

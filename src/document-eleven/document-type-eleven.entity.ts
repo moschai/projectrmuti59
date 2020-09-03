@@ -31,16 +31,10 @@ export class fte_document_type_eleven extends BaseEntity {
   changehistory: number;
 
   @Column({ type: "varchar", length: 128 })
-  otherchangehistory: string;
+  othermassege: string;
 
-  @Column({ type: "varchar", length: 255 })
-  oldhistory: string;
-
-  @Column({ type: "varchar", length: 255 })
-  newhistory: string;
-
-  @Column({ type: "varchar", length: 128 })
-  newnamehistory: string;
+  @Column({ type: "boolean", width: 3 })
+  otherdocument: boolean;
 
   @CreateDateColumn()
   created: Date;

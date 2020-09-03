@@ -6,18 +6,22 @@ import { DocumentThreeController } from "./document-three.controller";
 import { DocumentThreeService } from "./document-three.service";
 
 @EntityRepository(fte_document_type_three)
-export class DocumentTypeThreeRepository extends Repository<fte_document_type_three>{
-    async createDocumentThree(
-        createDocumentThreeDto: CreateDocumentThreeDto,
-        signatureThree: fte_signature_three
-    ): Promise<fte_document_type_three> {
-        const documentThree = new fte_document_type_three();
-        documentThree.leaveterm = createDocumentThreeDto.leaveterm;
-        documentThree.leaveyear = createDocumentThreeDto.leaveyear;
-        documentThree.returnterm = createDocumentThreeDto.returnterm;
-        documentThree.returnyear = createDocumentThreeDto.returnyear;
-        documentThree.signature = signatureThree;
+export class DocumentTypeThreeRepository extends Repository<
+  fte_document_type_three
+> {
+  async createDocumentThree(
+    createDocumentThreeDto: CreateDocumentThreeDto,
+    signatureThree: fte_signature_three
+  ): Promise<fte_document_type_three> {
+    const documentThree = new fte_document_type_three();
+    documentThree.leaveterm = createDocumentThreeDto.leaveterm;
+    documentThree.leaveyear = createDocumentThreeDto.leaveyear;
+    documentThree.returnterm = createDocumentThreeDto.returnterm;
+    documentThree.returnyear = createDocumentThreeDto.returnyear;
+    documentThree.signature = signatureThree;
+    documentThree.classyear = createDocumentThreeDto.classyear;
+    documentThree.timestudy = createDocumentThreeDto.timestudy;
 
-        return await documentThree.save();
-    }
+    return await documentThree.save();
+  }
 }
